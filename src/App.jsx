@@ -1,6 +1,6 @@
 import {} from "react";
 // import Home from './components/Home'
-import CreditCardForm from "./components/CreditCardForm";
+import CardForm from "./components/CardForm";
 
 import "./App.css";
 
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       {/* <Home/> */}
-      <CreditCardForm />
+      <CardForm />
     </>
   );
 }
