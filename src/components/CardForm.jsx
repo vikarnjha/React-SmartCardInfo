@@ -89,7 +89,7 @@ function CardForm() {
     try {
       const response = await fetch(`https://data.handyapi.com/bin/${bin}`, {
         headers: {
-          "x-api-key": "HAS-0YDdq61vXRkLmPgNu5ntZUVc48", // 🔐 your real key
+          "x-api-key": "your key here", // 🔐 your real key
         },
       });
 
