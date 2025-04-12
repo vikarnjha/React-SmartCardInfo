@@ -1,16 +1,16 @@
-import { } from 'react'
-import Home from './components/Home'
+import {} from "react";
+// import Home from './components/Home'
+import CreditCardForm from "./components/CreditCardForm";
 
-import './App.css'
+import "./App.css";
 
 function App() {
-
-
   return (
     <>
-      <Home/>
+      {/* <Home/> */}
+      <CreditCardForm />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
