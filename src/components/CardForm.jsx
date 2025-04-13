@@ -193,6 +193,9 @@ function CardForm() {
               </label>
               <input
                 type="text"
+                maxLength="5"
+                minLength="4"
+                pattern="[0-9/]+"
                 value={cardExpire}
                 onChange={(e) => setCardExpire(e.target.value)}
                 className="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
@@ -211,7 +214,7 @@ function CardForm() {
                 value={cardSecurity}
                 onChange={(e) => setCardSecurity(e.target.value)}
                 className="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-                placeholder="CVC"
+                placeholder="CVV"
               />
             </div>
           </div>
