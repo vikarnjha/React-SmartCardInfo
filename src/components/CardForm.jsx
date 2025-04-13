@@ -126,7 +126,9 @@ function CardForm() {
               <img src={bankInfo.icon} alt="icon" className="h-14" />
             )}
           </div>
-          <div cardName="flex justify-between items-end">{}</div>
+          <div cardName="flex justify-between items-end">
+            <img src={nfc} alt="icon" className="h-10"/>
+          </div>
 
           {/* <div className="flex justify-between items-start">
           <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
