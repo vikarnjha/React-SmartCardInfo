@@ -158,7 +158,9 @@ function CardForm() {
                 <img src={cardInfo.icon} alt="icon" className="h-14" />
               )}
             </div>
-            <div className="uppercase font-semibold text-center mt-1">Type</div>
+            <div className="uppercase font-semibold text-center mt-0.5">
+              Type
+            </div>
           </div>
         </div>
       </div>
