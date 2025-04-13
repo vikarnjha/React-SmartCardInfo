@@ -139,10 +139,10 @@ function CardForm() {
             )}
           </div> */}
         </div>
-        <div cardName="flex justify-between items-end">
-          <img src={chip} alt="icon" className="h-10" />
+        <div>
+          <img src={chip} alt="icon" className="h-10 mt-5 ml-5" />
         </div>
-        <div className="text-center text-2xl tracking-widest font-mono">
+        <div className="text-center text-2xl tracking-widest font-mono mb-3">
           {cardNumber || "0123 4567 8910 1112"}
         </div>
         <div className="flex justify-between items-center text-sm font-light">
