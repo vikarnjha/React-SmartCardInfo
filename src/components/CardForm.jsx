@@ -10,14 +10,15 @@ import {
 } from "../config/cardIcons";
 
 const cardConfig = {
-  visa: { icon: visa, color: "lime" },
-  mastercard: { icon: mastercard, color: "lightblue" },
-  rupay: { icon: rupay, color: "blue" },
-  "american express": { icon: amex, color: "green" },
-  "diners club": { icon: diners, color: "orange" },
-  discover: { icon: discover, color: "purple" },
-  jcb: { icon: jcb, color: "red" },
+  visa: { icon: visa, color: "#2563EB" },            // Tailwind blue-600
+  mastercard: { icon: mastercard, color: "#F97316" }, // Tailwind orange-500
+  rupay: { icon: rupay, color: "#10B981" },           // Tailwind emerald-500
+  "american express": { icon: amex, color: "#6366F1" }, // Tailwind indigo-500
+  "diners club": { icon: diners, color: "#EC4899" },    // Tailwind pink-500
+  discover: { icon: discover, color: "#F59E0B" },       // Tailwind amber-500
+  jcb: { icon: jcb, color: "#8B5CF6" },                 // Tailwind violet-500
 };
+
 
 const cardNumbers = [
   { number: "4111 1111 1111 1111" },
