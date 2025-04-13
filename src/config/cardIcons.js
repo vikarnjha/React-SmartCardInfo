@@ -17,5 +17,8 @@ import jcb from "../assets/rupay.svg";
 
 import nfc from "../assets/nfc.svg";
 
+import chip from "../assets/chip.png";
 
-export { visa, mastercard, rupay, amex, diners, discover, jcb, nfc };
+
+
+export { visa, mastercard, rupay, amex, diners, discover, jcb, nfc, chip };

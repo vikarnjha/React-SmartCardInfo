@@ -7,6 +7,7 @@ import {
   discover,
   jcb,
   nfc,
+  chip,
 } from "./cardIcons";
 
 export const cardConfig = {
@@ -18,4 +19,5 @@ export const cardConfig = {
   discover: { icon: discover, color: "purple" },
   jcb: { icon: jcb, color: "red" },
   nfc: { icon: nfc },
+  chip: { icon: chip },
 };

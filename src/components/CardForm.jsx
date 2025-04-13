@@ -8,6 +8,7 @@ import {
   discover,
   jcb,
   nfc,
+  chip,
 } from "../config/cardIcons";
 
 const cardConfig = {
@@ -19,6 +20,7 @@ const cardConfig = {
   discover: { icon: discover, color: "#F59E0B" }, // Tailwind amber-500
   jcb: { icon: jcb, color: "#8B5CF6" }, // Tailwind violet-500
   nfc: { icon: nfc },
+  chip: { icon: chip },
 };
 
 const cardNumbers = [
@@ -127,7 +129,7 @@ function CardForm() {
             )}
           </div>
           <div cardName="flex justify-between items-end">
-            <img src={nfc} alt="icon" className="h-10"/>
+            <img src={nfc} alt="icon" className="h-10" />
           </div>
 
           {/* <div className="flex justify-between items-start">
@@ -137,6 +139,9 @@ function CardForm() {
             )}
           </div> */}
         </div>
+        <div cardName="flex justify-between items-end">
+            <img src={chip} alt="icon" className="h-10" />
+          </div>
         <div className="text-center text-2xl tracking-widest font-mono">
           {cardNumber || "0123 4567 8910 1112"}
         </div>
