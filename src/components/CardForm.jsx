@@ -189,22 +189,33 @@ function CardForm() {
           <div className="flex space-x-4">
             <div className="flex-1">
               <label className="block text-sm font-medium text-gray-700">
-                Expiration (mm/yy)
+                Expiry (mm/yy)
               </label>
               <input
                 type="text"
                 maxLength="5"
-                minLength="4"
                 pattern="[0-9/]+"
                 value={cardExpire}
-                onChange={(e) => setCardExpire(e.target.value)}
+                onChange={(e) => {
+                  let value = e.target.value;
+
+                  // Remove all non-digit characters except "/"
+                  value = value.replace(/[^0-9]/g, "");
+
+                  // Auto-insert "/" after two digits
+                  if (value.length > 2) {
+                    value = value.slice(0, 2) + "/" + value.slice(2);
+                  }
+
+                  setCardExpire(value);
+                }}
                 className="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-                placeholder="01/23"
+                placeholder="MM/YY"
               />
             </div>
             <div className="flex-1">
               <label className="block text-sm font-medium text-gray-700">
-                Security Code
+                CVV
               </label>
               <input
                 type="text"
@@ -214,7 +225,7 @@ function CardForm() {
                 value={cardSecurity}
                 onChange={(e) => setCardSecurity(e.target.value)}
                 className="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-                placeholder="CVV"
+                placeholder="123"
               />
             </div>
           </div>
