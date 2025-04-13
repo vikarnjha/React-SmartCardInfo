@@ -6,6 +6,7 @@ import {
   diners,
   discover,
   jcb,
+  nfc,
 } from "./cardIcons";
 
 export const cardConfig = {
@@ -16,4 +17,5 @@ export const cardConfig = {
   "diners club": { icon: diners, color: "orange" },
   discover: { icon: discover, color: "purple" },
   jcb: { icon: jcb, color: "red" },
+  nfc: { icon: nfc },
 };

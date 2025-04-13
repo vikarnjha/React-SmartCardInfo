@@ -15,4 +15,7 @@ import discover from "../assets/rupay.svg";
 // import jcb from "../assets/jcb.svg";
 import jcb from "../assets/rupay.svg";
 
-export { visa, mastercard, rupay, amex, diners, discover, jcb };
+import nfc from "../assets/nfc.svg";
+
+
+export { visa, mastercard, rupay, amex, diners, discover, jcb, nfc };

@@ -7,18 +7,19 @@ import {
   diners,
   discover,
   jcb,
+  nfc,
 } from "../config/cardIcons";
 
 const cardConfig = {
-  visa: { icon: visa, color: "#2563EB" },            // Tailwind blue-600
+  visa: { icon: visa, color: "#2563EB" }, // Tailwind blue-600
   mastercard: { icon: mastercard, color: "#F97316" }, // Tailwind orange-500
-  rupay: { icon: rupay, color: "#10B981" },           // Tailwind emerald-500
+  rupay: { icon: rupay, color: "#10B981" }, // Tailwind emerald-500
   "american express": { icon: amex, color: "#6366F1" }, // Tailwind indigo-500
-  "diners club": { icon: diners, color: "#EC4899" },    // Tailwind pink-500
-  discover: { icon: discover, color: "#F59E0B" },       // Tailwind amber-500
-  jcb: { icon: jcb, color: "#8B5CF6" },                 // Tailwind violet-500
+  "diners club": { icon: diners, color: "#EC4899" }, // Tailwind pink-500
+  discover: { icon: discover, color: "#F59E0B" }, // Tailwind amber-500
+  jcb: { icon: jcb, color: "#8B5CF6" }, // Tailwind violet-500
+  nfc: { icon: nfc },
 };
-
 
 const cardNumbers = [
   { number: "4111 1111 1111 1111" },
@@ -110,6 +111,7 @@ function CardForm() {
 
   const cardInfo = cardConfig[cardType] || {};
   const cardBgColor = cardInfo?.color || "#7f8c8d";
+  const bankInfo = cardConfig[cardType] || {};
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-8 gap-10">
@@ -120,10 +122,18 @@ function CardForm() {
       >
         <div className="flex justify-between items-start">
           <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
+            {bankInfo?.icon && (
+              <img src={bankInfo.icon} alt="icon" className="h-14" />
+            )}
+          </div>
+          <div cardName="flex justify-between items-end">{}</div>
+
+          {/* <div className="flex justify-between items-start">
+          <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
             {cardInfo?.icon && (
               <img src={cardInfo.icon} alt="icon" className="h-6" />
             )}
-          </div>
+          </div> */}
         </div>
         <div className="text-center text-2xl tracking-widest font-mono">
           {cardNumber || "0123 4567 8910 1112"}
