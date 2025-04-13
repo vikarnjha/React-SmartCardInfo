@@ -9,8 +9,10 @@ import amex from "../assets/amex.svg";
 
 import diners from "../assets/dinersclub.svg";
 
-import discover from "../assets/discover.svg";
+// import discover from "../assets/discover.svg";
+import discover from "../assets/rupay.svg";
 
-import jcb from "../assets/jcb.svg";
+// import jcb from "../assets/jcb.svg";
+import jcb from "../assets/rupay.svg";
 
 export { visa, mastercard, rupay, amex, diners, discover, jcb };
