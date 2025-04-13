@@ -140,16 +140,23 @@ function CardForm() {
           </div> */}
         </div>
         <div cardName="flex justify-between items-end">
-            <img src={chip} alt="icon" className="h-10" />
-          </div>
+          <img src={chip} alt="icon" className="h-10" />
+        </div>
         <div className="text-center text-2xl tracking-widest font-mono">
           {cardNumber || "0123 4567 8910 1112"}
         </div>
-        <div className="flex justify-between text-sm font-light">
+        <div className="flex justify-between items-center text-sm font-light">
           <div>
-            <div className="uppercase opacity-70">Cardholder</div>
-            <div className="font-semibold text-base">
-              {cardName || "JOHN DOE"}
+            <div className="flex justify-between items-center gap-2.5">
+              <div className="uppercase opacity-70">Valid Upto</div>
+              <div className="font-semibold text-base">
+                {cardExpire || "01/31"}
+              </div>
+            </div>
+            <div>
+              <div className="font-semibold text-base">
+                {cardName || "JOHN DOE"}
+              </div>
             </div>
           </div>
           <div>
