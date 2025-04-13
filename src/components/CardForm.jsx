@@ -131,13 +131,6 @@ function CardForm() {
           <div cardName="flex justify-between items-end">
             <img src={nfc} alt="icon" className="h-10" />
           </div>
-
-          {/* <div className="flex justify-between items-start">
-          <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
-            {cardInfo?.icon && (
-              <img src={cardInfo.icon} alt="icon" className="h-6" />
-            )}
-          </div> */}
         </div>
         <div>
           <img src={chip} alt="icon" className="h-10 mt-5 ml-5" />
@@ -160,10 +153,12 @@ function CardForm() {
             </div>
           </div>
           <div>
-            <div className="uppercase opacity-70">Expires</div>
-            <div className="font-semibold text-base">
-              {cardExpire || "01/31"}
+            <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
+              {cardInfo?.icon && (
+                <img src={cardInfo.icon} alt="icon" className="h-14" />
+              )}
             </div>
+            <div className="uppercase font-semibold text-center mt-1">Type</div>
           </div>
         </div>
       </div>
