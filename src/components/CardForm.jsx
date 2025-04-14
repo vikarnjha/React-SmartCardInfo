@@ -14,13 +14,13 @@ import {
 } from "../config/cardIcons";
 
 const cardConfig = {
-  visa: { icon: visa, color: "#2563EB" }, // Tailwind blue-600
-  mastercard: { icon: mastercard, color: "#F97316" }, // Tailwind orange-500
-  rupay: { icon: rupay, color: "#10B981" }, // Tailwind emerald-500
-  "american express": { icon: amex, color: "#6366F1" }, // Tailwind indigo-500
-  "diners club": { icon: diners, color: "#EC4899" }, // Tailwind pink-500
-  discover: { icon: discover, color: "#F59E0B" }, // Tailwind amber-500
-  jcb: { icon: jcb, color: "#8B5CF6" }, // Tailwind violet-500
+  visa: { icon: visa },
+  mastercard: { icon: mastercard },
+  rupay: { icon: rupay },
+  "american express": { icon: amex },
+  "diners club": { icon: diners },
+  discover: { icon: discover },
+  jcb: { icon: jcb },
   nfc: { icon: nfc },
   chip: { icon: chip },
   carddefault: { icon: carddefault },
@@ -38,8 +38,10 @@ const cardNumbers = [
 ];
 
 function CardForm() {
-  const [cardNumber, setCardNumber] = useState("");
+  const [cardNetwork, setCardNetwork] = useState("");
   const [cardType, setCardType] = useState("");
+  const [cardBrand, setCardBrand] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
   const [cardName, setCardName] = useState("");
   const [cardExpire, setCardExpire] = useState("");
   const [cardSecurity, setCardSecurity] = useState("");
@@ -81,12 +83,18 @@ function CardForm() {
     if (rawValue.length >= 6) {
       const detectedType = await detectCardTypeFromAPI(rawValue);
       if (detectedType) {
-        setCardType(detectedType.toLowerCase());
+        setCardNetwork(detectedType.scheme.toLowerCase());
+        setCardType(detectedType.type.toUpperCase());
+        setCardBrand(detectedType.issuer);
       } else {
+        setCardNetwork("");
         setCardType("");
+        setCardBrand("");
       }
     } else {
+      setCardNetwork("");
       setCardType("");
+      setCardBrand("");
     }
   };
 
@@ -107,17 +115,19 @@ function CardForm() {
 
       const data = await response.json();
       console.log(data.Scheme);
-      return (data.Scheme || "").toLowerCase();
+      return {
+        scheme: data.Scheme,
+        type: data.Type,
+        issuer: data.Issuer || "",
+      };
     } catch (error) {
       console.error("Card type detection failed:", error);
-      setApiError("Card type detection failed");
+      setApiError({ error });
       return "";
     }
   };
 
-  const cardInfo = cardConfig[cardType] || {};
-  // const cardBgColor = cardInfo?.color || "#7f8c8d";
-  // const bankInfo = cardConfig[cardType] || {};
+  const cardInfo = cardConfig[cardNetwork] || {};
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-8 gap-10">
@@ -129,7 +139,7 @@ function CardForm() {
           style={{ backgroundImage: `url(${carddefault})` }}
         >
           <div className="flex justify-between items-start">
-            <div>Bank Name</div>
+            <div>{cardBrand || ""}</div>
             <div cardName="flex justify-between items-end">
               <img
                 src={nfc}
@@ -165,7 +175,7 @@ function CardForm() {
                 )}
               </div>
               <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
-                Type
+                {cardType || ""}
               </div>
             </div>
           </div>
