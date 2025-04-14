@@ -10,7 +10,6 @@ import {
   nfc,
   chip,
   carddefault,
-  cardback,
 } from "../config/cardIcons";
 
 const cardConfig = {
@@ -24,7 +23,6 @@ const cardConfig = {
   nfc: { icon: nfc },
   chip: { icon: chip },
   carddefault: { icon: carddefault },
-  cardback: { icon: cardback },
 };
 
 const cardNumbers = [
@@ -183,8 +181,8 @@ function CardForm() {
         {/* Card Preview Back */}
         <div className="w-96 h-60 rounded-xl bg-gradient-to-br from-[#01081F] to-[#021740] text-white p-5 shadow-xl font-sans">
           {/* Bank Name */}
-          <div className="bg-[#0A1A3A] rounded-md px-4 py-2 mb-4 text-sm tracking-wide border border-[#0F2C59] font-medium shadow-inner">
-            Bank Name
+          <div className="bg-[#0A1A3A] rounded-md px-4 py-2 mb-4 text-xs tracking-wide border border-[#0F2C59] font-medium shadow-inner">
+            {cardBrand || ""}
           </div>
 
           {/* Magnetic Strip */}
