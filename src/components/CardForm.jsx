@@ -118,53 +118,55 @@ function CardForm() {
   return (
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-8 gap-10">
       {/* Card Preview Front */}
-      <div
-        className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
-        style={{ backgroundColor: cardBgColor }}
-      >
-        <div className="flex justify-between items-start">
-          <div>Bank Name</div>
-          <div cardName="flex justify-between items-end">
-            <img src={nfc} alt="icon" className="h-10" />
+      <div className="flex gap-3 flex-col items-center justify-center">
+        <div
+          className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
+          style={{ backgroundColor: cardBgColor }}
+        >
+          <div className="flex justify-between items-start">
+            <div>Bank Name</div>
+            <div cardName="flex justify-between items-end">
+              <img src={nfc} alt="icon" className="h-10" />
+            </div>
           </div>
-        </div>
-        <div>
-          <img src={chip} alt="icon" className="h-10 mt-5 ml-5" />
-        </div>
-        <div className="text-center text-2xl tracking-widest font-mono mb-3">
-          {cardNumber || "0123 4567 8910 1112"}
-        </div>
-        <div className="flex justify-between items-center text-sm font-light">
           <div>
-            <div className="flex justify-between items-center gap-2.5">
-              <div className="uppercase opacity-70">Valid Upto</div>
-              <div className="font-semibold text-base">
-                {cardExpire || "01/31"}
+            <img src={chip} alt="icon" className="h-10 mt-5 ml-5" />
+          </div>
+          <div className="text-center text-2xl tracking-widest font-mono mb-3">
+            {cardNumber || "0123 4567 8910 1112"}
+          </div>
+          <div className="flex justify-between items-center text-sm font-light">
+            <div>
+              <div className="flex justify-between items-center gap-2.5">
+                <div className="uppercase opacity-70">Valid Upto</div>
+                <div className="font-semibold text-base">
+                  {cardExpire || "01/31"}
+                </div>
+              </div>
+              <div>
+                <div className="font-semibold text-base">
+                  {cardName || "JOHN DOE"}
+                </div>
               </div>
             </div>
             <div>
-              <div className="font-semibold text-base">
-                {cardName || "JOHN DOE"}
+              <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
+                {cardInfo?.icon && (
+                  <img src={cardInfo.icon} alt="icon" className="h-14" />
+                )}
+              </div>
+              <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
+                Type
               </div>
             </div>
           </div>
-          <div>
-            <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
-              {cardInfo?.icon && (
-                <img src={cardInfo.icon} alt="icon" className="h-14" />
-              )}
-            </div>
-            <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
-              Type
-            </div>
-          </div>
         </div>
+        {/* Card Preview Back */}
+        <div
+          className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
+          style={{ backgroundColor: cardBgColor }}
+        ></div>
       </div>
-      {/* Card Preview Back */}
-      <div
-        className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
-        style={{ backgroundColor: cardBgColor }}
-      ></div>
 
       {/* Form */}
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
