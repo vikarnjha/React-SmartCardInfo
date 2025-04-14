@@ -121,7 +121,7 @@ function CardForm() {
       <div
         className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
         style={{ backgroundColor: cardBgColor }}
-        >
+      >
         <div className="flex justify-between items-start">
           <div>Bank Name</div>
           <div cardName="flex justify-between items-end">
@@ -161,7 +161,10 @@ function CardForm() {
         </div>
       </div>
       {/* Card Preview Back */}
-      
+      <div
+        className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
+        style={{ backgroundColor: cardBgColor }}
+      ></div>
 
       {/* Form */}
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
