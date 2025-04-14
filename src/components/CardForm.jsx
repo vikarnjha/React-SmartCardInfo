@@ -26,13 +26,15 @@ const cardConfig = {
 };
 
 const cardNumbers = [
-  { number: "4111 1111 1111 1111" },
-  { number: "5555 5555 5555 4444" },
-  { number: "6521 1234 5678 9012" },
-  { number: "3782 822463 10005" },
-  { number: "3610 102025 5904" },
-  { number: "6011 0009 9013 9424" },
-  { number: "3530 1113 3330 0000" },
+  { number: "4210 0611 1111 1111" }, // Visa Debit
+  { number: "4166 4411 1111 1111" }, // Visa Credit
+  { number: "4510 0690 1111 1111" }, // Visa Prepaid
+  { number: "5086 3710 5555 4444" }, // Rupay Debit
+  { number: "6529 7210 5678 9012" }, // Rupay Credit
+  { number: "5545 3410 5678 9012" }, // Mastercard Debit
+  { number: "5243 7369 5678 9012" }, // Mastercard Credit
+  { number: "3782 822463 10005" }, // American Express Credit
+  { number: "3610 102025 5904" }, // Diners Club Credit
 ];
 
 function CardForm() {
@@ -137,7 +139,7 @@ function CardForm() {
           style={{ backgroundImage: `url(${carddefault})` }}
         >
           <div className="flex justify-between items-start">
-            <div>{cardBrand || ""}</div>
+            <div>{cardBrand || "BANK NAME"}</div>
             <div cardName="flex justify-between items-end">
               <img
                 src={nfc}
@@ -173,7 +175,7 @@ function CardForm() {
                 )}
               </div>
               <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
-                {cardType || ""}
+                {cardType || "Type"}
               </div>
             </div>
           </div>
