@@ -33,7 +33,7 @@ const cardNumbers = [
   { number: "6529 7210 5678 9012" }, // Rupay Credit
   { number: "5545 3410 5678 9012" }, // Mastercard Debit
   { number: "5243 7369 5678 9012" }, // Mastercard Credit
-  { number: "3782 822463 10005" }, // American Express Credit
+  { number: "3747 412463 10005" }, // American Express Credit
   { number: "3610 102025 5904" }, // Diners Club Credit
 ];
 
