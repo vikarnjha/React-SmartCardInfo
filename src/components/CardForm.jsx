@@ -171,28 +171,31 @@ function CardForm() {
           </div>
         </div>
         {/* Card Preview Back */}
-        <div className="w-96 h-60 rounded-xl bg-gradient-to-br from-gray-800 to-black text-white p-5 shadow-lg relative font-mono">
-          {/* Bank Website Link */}
-          <div className="bg-gray-900 rounded-md px-4 py-2 mb-3 text-sm tracking-wide border border-gray-700">
-            www.yourbankwebsite.com
+        <div className="w-96 h-60 rounded-xl bg-gradient-to-br from-[#01081F] to-[#021740] text-white p-5 shadow-xl font-sans">
+          {/* Bank Name */}
+          <div className="bg-[#0A1A3A] rounded-md px-4 py-2 mb-4 text-sm tracking-wide border border-[#0F2C59] font-medium shadow-inner">
+            Bank Name
           </div>
 
           {/* Magnetic Strip */}
-          <div className="bg-gray-700 h-10 rounded-md mb-5 border border-gray-600"></div>
+          <div className="bg-[#050505] h-10 rounded-md mb-6 border border-[#0F2C59] shadow-inner"></div>
 
           {/* Signature and CVV */}
           <div className="flex justify-between space-x-4">
             {/* Signature Box */}
             <div className="flex-1">
-              <div className="bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-400 text-xs font-semibold">
-                Signature
+              <div className="flex justify-between items-center bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-300 text-xs font-semibold shadow-sm tracking-wide">
+                Signature{" "}
+                <div className="font-[cursive] italic text-sm text-gray-800 tracking-wide opacity-70">
+                  {cardName || "JOHN DOE"}
+                </div>
               </div>
             </div>
 
             {/* CVV Box */}
             <div className="w-20">
-              <div className="bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-400 text-xs font-semibold text-center">
-                CVV
+              <div className="bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-300 text-xs font-semibold shadow-sm text-center tracking-widest">
+                CVV <div className="opacity-70">{cardSecurity || "123"}</div>
               </div>
             </div>
           </div>
