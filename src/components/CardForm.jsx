@@ -131,7 +131,11 @@ function CardForm() {
           <div className="flex justify-between items-start">
             <div>Bank Name</div>
             <div cardName="flex justify-between items-end">
-              <img src={nfc} alt="icon" className="h-10 opacity-100 contrast-10" />
+              <img
+                src={nfc}
+                alt="icon"
+                className="h-10 opacity-100 contrast-10"
+              />
             </div>
           </div>
           <div>
@@ -167,47 +171,65 @@ function CardForm() {
           </div>
         </div>
         {/* Card Preview Back */}
-        <div
-          className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
-          // style={{ backgroundColor: cardBgColor }}
-          style={{ backgroundImage: `url(${cardback})` }}
-        >
-          <div className="flex justify-end items-center gap-2.5">
-                <div className="font-semibold mr-10">
-                  {cardSecurity || "123"}
-                <div className="uppercase opacity-70 text-base">CVV</div>
-                </div>
+        <div className="w-96 h-60 rounded-xl bg-gradient-to-br from-gray-800 to-black text-white p-5 shadow-lg relative font-mono">
+          {/* Bank Website Link */}
+          <div className="bg-gray-900 rounded-md px-4 py-2 mb-3 text-sm tracking-wide border border-gray-700">
+            www.yourbankwebsite.com
+          </div>
+
+          {/* Magnetic Strip */}
+          <div className="bg-gray-700 h-10 rounded-md mb-5 border border-gray-600"></div>
+
+          {/* Signature and CVV */}
+          <div className="flex justify-between space-x-4">
+            {/* Signature Box */}
+            <div className="flex-1">
+              <div className="bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-400 text-xs font-semibold">
+                Signature
               </div>
+            </div>
+
+            {/* CVV Box */}
+            <div className="w-20">
+              <div className="bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-400 text-xs font-semibold text-center">
+                CVV
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Form */}
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h2 className="text-2xl font-semibold mb-6 text-center">
-          Smart Card Info
+      <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-200">
+        <h2 className="text-3xl font-bold mb-6 text-center text-indigo-600">
+          💳 Smart Card Info
         </h2>
-        <form className="space-y-4">
+
+        <form className="space-y-5">
+          {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-semibold text-gray-600 mb-1">
               Name
             </label>
             <input
               type="text"
               value={cardName}
               onChange={(e) => setCardName(e.target.value.toUpperCase())}
-              className="uppercase w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+              className="uppercase w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
               placeholder="JOHN DOE"
             />
           </div>
+
+          {/* Card Number */}
           <div>
-            <label className="text-sm font-medium text-gray-700 flex justify-between items-center">
+            <label className="text-sm font-semibold text-gray-600 flex justify-between items-center mb-1">
               Card Number
               <button
                 type="button"
-                className="text-xs px-2 py-1 bg-gray-400 text-white rounded hover:bg-gray-500 cursor-pointer"
+                className="text-xs px-3 py-1 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition duration-200"
                 onClick={generateRandomCard}
               >
-                Generate Random
+                Generate
               </button>
             </label>
             <input
@@ -217,16 +239,18 @@ function CardForm() {
               minLength="6"
               value={cardNumber}
               onChange={handleCardNumberChange}
-              className="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
               placeholder="0123 4567 8910 1112"
             />
             {apiError && (
-              <div className="text-red-500 text-sm mt-1">{apiError}</div>
+              <p className="text-red-500 text-sm mt-1">{apiError}</p>
             )}
           </div>
+
+          {/* Expiry & CVV */}
           <div className="flex space-x-4">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
                 Expiry (mm/yy)
               </label>
               <input
@@ -236,23 +260,18 @@ function CardForm() {
                 value={cardExpire}
                 onChange={(e) => {
                   let value = e.target.value;
-
-                  // Remove all non-digit characters except "/"
                   value = value.replace(/[^0-9]/g, "");
-
-                  // Auto-insert "/" after two digits
                   if (value.length > 2) {
                     value = value.slice(0, 2) + "/" + value.slice(2);
                   }
-
                   setCardExpire(value);
                 }}
-                className="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
                 placeholder="MM/YY"
               />
             </div>
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-semibold text-gray-600 mb-1">
                 CVV
               </label>
               <input
@@ -262,7 +281,7 @@ function CardForm() {
                 pattern="[0-9]+"
                 value={cardSecurity}
                 onChange={(e) => setCardSecurity(e.target.value)}
-                className="w-full mt-1 p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
                 placeholder="123"
               />
             </div>
