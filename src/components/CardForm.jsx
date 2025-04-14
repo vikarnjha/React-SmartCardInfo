@@ -117,11 +117,11 @@ function CardForm() {
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-8 gap-10">
-      {/* Card Preview */}
+      {/* Card Preview Front */}
       <div
         className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
         style={{ backgroundColor: cardBgColor }}
-      >
+        >
         <div className="flex justify-between items-start">
           <div>Bank Name</div>
           <div cardName="flex justify-between items-end">
@@ -154,12 +154,14 @@ function CardForm() {
                 <img src={cardInfo.icon} alt="icon" className="h-14" />
               )}
             </div>
-            <div className="uppercase font-semibold text-center mt-0.5">
+            <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
               Type
             </div>
           </div>
         </div>
       </div>
+      {/* Card Preview Back */}
+      
 
       {/* Form */}
       <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
@@ -184,7 +186,7 @@ function CardForm() {
               Card Number
               <button
                 type="button"
-                className="text-xs px-2 py-1 bg-gray-400 text-white rounded hover:bg-gray-500"
+                className="text-xs px-2 py-1 bg-gray-400 text-white rounded hover:bg-gray-500 cursor-pointer"
                 onClick={generateRandomCard}
               >
                 Generate Random
