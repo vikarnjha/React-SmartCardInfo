@@ -113,7 +113,7 @@ function CardForm() {
 
   const cardInfo = cardConfig[cardType] || {};
   const cardBgColor = cardInfo?.color || "#7f8c8d";
-  const bankInfo = cardConfig[cardType] || {};
+  // const bankInfo = cardConfig[cardType] || {};
 
   return (
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-8 gap-10">
@@ -123,11 +123,7 @@ function CardForm() {
         style={{ backgroundColor: cardBgColor }}
       >
         <div className="flex justify-between items-start">
-          <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
-            {bankInfo?.icon && (
-              <img src={bankInfo.icon} alt="icon" className="h-14" />
-            )}
-          </div>
+          <div>Bank Name</div>
           <div cardName="flex justify-between items-end">
             <img src={nfc} alt="icon" className="h-10" />
           </div>
