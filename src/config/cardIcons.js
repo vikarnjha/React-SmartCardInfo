@@ -19,6 +19,12 @@ import nfc from "../assets/nfc.svg";
 
 import chip from "../assets/chip.png";
 
+import carddefault from "../assets/carddefault.png";
+
+import cardback from "../assets/cardback.png";
 
 
-export { visa, mastercard, rupay, amex, diners, discover, jcb, nfc, chip };
+
+
+
+export { visa, mastercard, rupay, amex, diners, discover, jcb, nfc, chip, carddefault, cardback };

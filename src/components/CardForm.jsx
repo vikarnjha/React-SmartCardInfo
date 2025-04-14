@@ -9,6 +9,8 @@ import {
   jcb,
   nfc,
   chip,
+  carddefault,
+  cardback,
 } from "../config/cardIcons";
 
 const cardConfig = {
@@ -21,6 +23,8 @@ const cardConfig = {
   jcb: { icon: jcb, color: "#8B5CF6" }, // Tailwind violet-500
   nfc: { icon: nfc },
   chip: { icon: chip },
+  carddefault: { icon: carddefault },
+  cardback: { icon: cardback },
 };
 
 const cardNumbers = [
@@ -112,7 +116,7 @@ function CardForm() {
   };
 
   const cardInfo = cardConfig[cardType] || {};
-  const cardBgColor = cardInfo?.color || "#7f8c8d";
+  // const cardBgColor = cardInfo?.color || "#7f8c8d";
   // const bankInfo = cardConfig[cardType] || {};
 
   return (
@@ -121,16 +125,17 @@ function CardForm() {
       <div className="flex gap-3 flex-col items-center justify-center">
         <div
           className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
-          style={{ backgroundColor: cardBgColor }}
+          // style={{ backgroundColor: cardBgColor }}
+          style={{ backgroundImage: `url(${carddefault})` }}
         >
           <div className="flex justify-between items-start">
             <div>Bank Name</div>
             <div cardName="flex justify-between items-end">
-              <img src={nfc} alt="icon" className="h-10" />
+              <img src={nfc} alt="icon" className="h-10 opacity-100 contrast-10" />
             </div>
           </div>
           <div>
-            <img src={chip} alt="icon" className="h-10 mt-5 ml-5" />
+            <img src={chip} alt="icon" className="h-10 mt-5 ml-5 opacity-80" />
           </div>
           <div className="text-center text-2xl tracking-widest font-mono mb-3">
             {cardNumber || "0123 4567 8910 1112"}
@@ -164,8 +169,16 @@ function CardForm() {
         {/* Card Preview Back */}
         <div
           className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
-          style={{ backgroundColor: cardBgColor }}
-        ></div>
+          // style={{ backgroundColor: cardBgColor }}
+          style={{ backgroundImage: `url(${cardback})` }}
+        >
+          <div className="flex justify-end items-center gap-2.5">
+                <div className="font-semibold mr-10">
+                  {cardSecurity || "123"}
+                <div className="uppercase opacity-70 text-base">CVV</div>
+                </div>
+              </div>
+        </div>
       </div>
 
       {/* Form */}
