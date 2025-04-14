@@ -119,7 +119,7 @@ function CardForm() {
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-8 gap-10">
       {/* Card Preview */}
       <div
-        className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between"
+        className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
         style={{ backgroundColor: cardBgColor }}
       >
         <div className="flex justify-between items-start">
