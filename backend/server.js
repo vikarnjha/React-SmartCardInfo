@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./configs/mongo.js";
+import {authRouter} from "./routes/auth.routes.js"
 
 dotenv.config();
 connectDB();
@@ -24,6 +25,8 @@ app.use(
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.use("/api/auth", authRouter);
 
 const PORT = process.env.PORT || 5000;
 
