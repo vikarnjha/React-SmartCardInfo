@@ -2,9 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { connectDB } from "../backend/config/mongo.js";
 
 dotenv.config();
-
+connectDB();
 const app = express();
 
 app.use(express.json());
@@ -20,6 +21,9 @@ app.use(
 );
 
 // Routes
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 const PORT = process.env.PORT || 5000;
 
