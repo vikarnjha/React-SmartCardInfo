@@ -131,7 +131,7 @@ function CardForm() {
   const cardInfo = cardConfig[cardNetwork] || {};
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-8 gap-10">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gradient-to-r from-gray-600 to-gray-900 p-8 gap-10">
       <div
         onClick={() => setIsFront(!isFront)}
         className="flex gap-3 flex-col items-center justify-center"
@@ -168,7 +168,7 @@ function CardForm() {
                 <div className="flex justify-between items-center gap-2.5">
                   <div className="uppercase opacity-70">Valid Upto</div>
                   <div className="font-semibold text-base">
-                    {cardExpire || "01/31"}
+                    {cardExpire || "MM/YY"}
                   </div>
                 </div>
                 <div>

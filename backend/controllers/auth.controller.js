@@ -84,7 +84,21 @@ const login = async (req, res) => {
 };
 
 const verify = async (req, res) => {
-  return;
+  try {
+    if (!req.userId) {
+      return res.status(401).json({ message: "Unauthorized: No user ID" });
+    }
+
+    const user = await User.findById(req.userId).select("-password");
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.json({ user });
+  } catch (err) {
+    res.status(500).json({ message: "Error verifying user" });
+  }
 };
 
 const logout = async (req, res) => {
