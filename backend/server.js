@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { connectDB } from "../backend/config/mongo.js";
+import { connectDB } from "./configs/mongo.js";
 
 dotenv.config();
 connectDB();
