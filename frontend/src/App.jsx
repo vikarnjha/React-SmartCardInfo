@@ -1,4 +1,3 @@
-import {} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CardForm from "./components/CardForm";
 import Navbar from "./components/Navbar";
@@ -6,75 +5,60 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Contact from "./components/Contact";
 import Auth from "./components/Auth";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import "./App.css";
 
 function App() {
   return (
-    <>
-      {/* <Home/> */}
+    <BrowserRouter>
+      <Routes>
+        {/* Public Route */}
+        <Route path="/" element={<Auth />} />
 
-      <BrowserRouter>
-        {/* Auth page rouge */}
-        <Routes>
-          <Route path="/" element={<Auth />} />
-        </Routes>
-
-        <Routes>
-          {/* Homepage route  */}
-          <Route
-            path="/home"
-            element={
+        {/* Protected Routes */}
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
               <div className="flex flex-col h-dvh">
-                <div>
-                  <Navbar />
-                </div>
+                <Navbar />
                 <div className="flex-1 h-full">
                   <CardForm />
                 </div>
-                <div>
-                  <Footer />
-                </div>
+                <Footer />
               </div>
-            }
-          />
-          {/* Profile page route  */}
-          <Route
-            path="/profile"
-            element={
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
               <div className="flex flex-col h-dvh">
-                <div>
-                  <Navbar />
-                </div>
-                <div>
-                  <Profile />
-                </div>
-                <div>
-                  <Footer />
-                </div>
+                <Navbar />
+                <Profile />
+                <Footer />
               </div>
-            }
-          />
-          {/* Contact page route  */}
-          <Route
-            path="/contact"
-            element={
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute>
               <div className="flex flex-col h-dvh">
-                <div>
-                  <Navbar />
-                </div>
+                <Navbar />
                 <div className="flex-1 h-full">
                   <Contact />
                 </div>
-                <div>
-                  <Footer />
-                </div>
+                <Footer />
               </div>
-            }
-          />
-        </Routes>
-      </BrowserRouter>
-    </>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
