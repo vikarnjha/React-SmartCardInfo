@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./configs/mongo.js";
-import {authRouter} from "./routes/auth.routes.js"
+import {authRouter} from "./routes/auth.route.js"
 
 dotenv.config();
 connectDB();
