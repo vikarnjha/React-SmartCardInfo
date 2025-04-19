@@ -2,11 +2,11 @@ import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Profile = () => {
   const { user, setUser } = useAuth();
   const [passwords, setPasswords] = useState({
-    
     currentPassword: "",
     newPassword: "",
     confirmNewPassword: "",
@@ -20,10 +20,17 @@ const Profile = () => {
 
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    setUser(null);
-    navigate("/");
-    window.location.reload();
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:5000/api/auth/logout", null, {
+        withCredentials: true, // Must be set to send cookies
+      });
+
+      setUser(null);
+      navigate("/");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
   };
 
   const handleChange = (e) => {
@@ -35,7 +42,6 @@ const Profile = () => {
       ...prev,
       [field]: !prev[field],
     }));
-
   };
 
   return (

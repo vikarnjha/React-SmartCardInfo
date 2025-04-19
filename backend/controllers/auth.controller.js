@@ -25,6 +25,7 @@ const register = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
+      sameSite: "None",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
     res.status(201).json({
@@ -69,6 +70,7 @@ const login = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true,
+      sameSite: "None",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
 
@@ -105,7 +107,7 @@ const logout = async (req, res) => {
   res.cookie("token", "", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "none",
+    sameSite: "None",
     maxAge: 0, // Remove cookie immediately
   });
 
