@@ -1,10 +1,12 @@
 import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
   const [passwords, setPasswords] = useState({
+    
     currentPassword: "",
     newPassword: "",
     confirmNewPassword: "",
@@ -16,6 +18,14 @@ const Profile = () => {
     confirmNewPassword: false,
   });
 
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setUser(null);
+    navigate("/");
+    window.location.reload();
+  };
+
   const handleChange = (e) => {
     setPasswords({ ...passwords, [e.target.name]: e.target.value });
   };
@@ -25,6 +35,7 @@ const Profile = () => {
       ...prev,
       [field]: !prev[field],
     }));
+
   };
 
   return (
@@ -96,9 +107,14 @@ const Profile = () => {
             {/* Buttons */}
             <div className="flex justify-center gap-4 mt-5">
               <button className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105">
-                Change Password
+                Change Password {/* TODO: Add functionality */}
               </button>
-              <button className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-white shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105">
+              <button
+                onClick={() => {
+                  handleLogout();
+                }}
+                className="px-4 py-2 bg-red-600 hover:bg-red-500 rounded-lg text-white shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105"
+              >
                 Logout
               </button>
             </div>
