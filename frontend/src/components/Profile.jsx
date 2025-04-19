@@ -22,7 +22,7 @@ const Profile = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout", null, {
+      await axios.post("https://react-smartcardinfo.onrender.com/api/auth/logout", null, {
         withCredentials: true, // Must be set to send cookies
       });
 

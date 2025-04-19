@@ -8,7 +8,7 @@ import Loading from "../loading/Loading";
 import { useAuth } from "../context/AuthContext";
 
 
-const API_URL = "http://localhost:5000/api/auth"; // Update with your backend route
+const API_URL = "https://react-smartcardinfo.onrender.com/api/auth"; // Update with your backend route
 
 const Auth = () => {
   const { setUser } = useAuth(); // get setUser from context

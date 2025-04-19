@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/auth/verify", {
+        const res = await axios.get("https://react-smartcardinfo.onrender.com/api/auth/verify", {
           withCredentials: true, // Send cookies
         });
         setUser(res.data.user); // Set user from backend response
