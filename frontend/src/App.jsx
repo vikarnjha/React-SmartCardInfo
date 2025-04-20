@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Contact from "./components/Contact";
 import Auth from "./components/Auth";
+import Cards from "./components/Cards"
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import "./App.css";
@@ -25,6 +26,20 @@ function App() {
                 <Navbar />
                 <div className="flex-1 h-full">
                   <CardForm />
+                </div>
+                <Footer />
+              </div>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/cards"
+          element={
+            <ProtectedRoute>
+              <div className="flex flex-col h-dvh">
+                <Navbar />
+                <div className="flex-1 h-full">
+                  <Cards />
                 </div>
                 <Footer />
               </div>
