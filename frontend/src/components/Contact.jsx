@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    subject: "",
     message: "",
   });
 
@@ -15,11 +14,12 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    alert("Your message has been sent!");
-    setFormData({ name: "", email: "", message: "" }); // Reset form
+    toast.success("Your message has been sent!");
+    setFormData({ subject: "", message: "" }); // Reset form
   };
 
   return (
+    <>
     <div className="flex justify-center items-center h-full bg-gradient-to-br from-gray-900 to-gray-800 text-white">
       <div className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-lg">
         <h2 className="text-3xl font-bold text-center mb-6">📩 Contact Us</h2>
@@ -27,25 +27,12 @@ const Contact = () => {
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-gray-400 mb-1">Your Name</label>
+            <label className="block text-gray-400 mb-1">Subject</label>
             <input
               type="text"
-              name="name"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-gray-400 mb-1">Your Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
+              name="subject"
+              placeholder="Enter your subject"
+              value={formData.subject}
               onChange={handleChange}
               className="w-full p-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
@@ -75,6 +62,8 @@ const Contact = () => {
         </form>
       </div>
     </div>
+    <ToastContainer position="top-right" autoClose={2000} />
+    </>
   );
 };
 
