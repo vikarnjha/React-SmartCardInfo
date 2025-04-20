@@ -36,9 +36,20 @@ function App() {
           path="/cards"
           element={
             <ProtectedRoute>
-              <div className="flex flex-col h-dvh">
+              <div className="flex flex-col h-full bg-gradient-to-br from-gray-900 to-gray-800">
                 <Navbar />
-                <div className="flex-1 h-full">
+                <div className="flex h-full flex-wrap justify-center gap-5 mt-5 mb-5">
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
+                  <Cards />
                   <Cards />
                 </div>
                 <Footer />
