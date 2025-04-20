@@ -131,7 +131,7 @@ function CardForm() {
   const cardInfo = cardConfig[cardNetwork] || {};
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gradient-to-r from-gray-600 to-gray-900 p-8 gap-10">
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-full bg-gradient-to-r from-gray-600 to-gray-900 p-8 gap-10">
       <div
         onClick={() => setIsFront(!isFront)}
         className="flex gap-3 flex-col items-center justify-center"
@@ -223,12 +223,12 @@ function CardForm() {
         )}
       </div>
       {/* Form */}
-      <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-200">
+      <div className="bg-gradient-to-br from-gray-100 to-gray-150 p-4 md:p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-200">
         <h2 className="text-3xl font-bold mb-6 text-center text-indigo-600">
           💳 Smart Card Info
         </h2>
 
-        <form className="space-y-5">
+        <form className="space-y-2">
           {/* Name */}
           <div>
             <label className="block text-sm font-semibold text-gray-600 mb-1">
@@ -238,7 +238,7 @@ function CardForm() {
               type="text"
               value={cardName}
               onChange={(e) => setCardName(e.target.value.toUpperCase())}
-              className="uppercase w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
+              className="uppercase w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none shadow-sm"
               placeholder="JOHN DOE"
             />
           </div>
@@ -262,7 +262,7 @@ function CardForm() {
               minLength="6"
               value={cardNumber}
               onChange={handleCardNumberChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
+              className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none shadow-sm"
               placeholder="0123 4567 8910 1112"
             />
             {apiError && (
@@ -271,7 +271,7 @@ function CardForm() {
           </div>
 
           {/* Expiry & CVV */}
-          <div className="flex space-x-4">
+          <div className="flex space-x-5">
             <div className="flex-1">
               <label className="block text-sm font-semibold text-gray-600 mb-1">
                 Expiry (mm/yy)
@@ -289,7 +289,7 @@ function CardForm() {
                   }
                   setCardExpire(value);
                 }}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
+                className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none shadow-sm"
                 placeholder="MM/YY"
               />
             </div>
@@ -304,7 +304,7 @@ function CardForm() {
                 pattern="[0-9]+"
                 value={cardSecurity}
                 onChange={(e) => setCardSecurity(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-sm"
+                className="w-full px-4 py-3 border border-gray-400 rounded-lg focus:ring-2 focus:ring-indigo-400 focus:outline-none shadow-sm"
                 placeholder="123"
               />
             </div>
