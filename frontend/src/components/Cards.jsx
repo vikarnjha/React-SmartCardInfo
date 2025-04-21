@@ -85,7 +85,7 @@ const Cards = ({
               </div>
               <div>
                 <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
-                  <img src={cardNetwork} alt="icon" className="h-14" />
+                  <img src={cardNetwork} className="h-14" />
                 </div>
                 <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
                   {cardType || "Type"}
