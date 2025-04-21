@@ -1,18 +1,22 @@
 import express from "express";
+import User from "../models/user.model.js";
 const cardRouter = express.Router();
-const User = require("../models/user.model");
 
-cardRouter.get("/cards/:userId", async (req, res) => {
+cardRouter.get("/cards/email/:email", async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId).select("cards");
+    const user = await User.findOne({ email: req.params.email }).select(
+      "cards"
+    );
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+
     res.json(user.cards);
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error("Error fetching cards by email:", error.message);
     res.status(500).json({ message: "Server error" });
   }
 });
 
-module.exports = cardRouter;
+export { cardRouter };

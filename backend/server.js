@@ -4,6 +4,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./configs/mongo.js";
 import {authRouter} from "./routes/auth.route.js"
+import {cardRouter} from "./routes/card.route.js"
+
 
 dotenv.config();
 connectDB();
@@ -22,6 +24,7 @@ app.use(
 );
 
 // Routes
+app.use("/api", cardRouter);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
