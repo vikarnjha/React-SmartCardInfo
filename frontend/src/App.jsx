@@ -38,7 +38,7 @@ function App() {
             <ProtectedRoute>
               <div className="flex flex-col h-full bg-gradient-to-br from-gray-900 to-gray-800">
                 <Navbar />
-                <div className="flex h-full flex-wrap justify-center gap-5 mt-5 mb-5">
+                <div className="flex flex-wrap justify-center gap-5 mt-5 mb-5">
                   <SavedCards />
                 </div>
                 <Footer />

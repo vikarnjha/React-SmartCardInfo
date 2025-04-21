@@ -46,7 +46,7 @@ const Cards = ({
   onDelete,
 }) => {
   const [isFront, setIsFront] = useState(true); // 👈 Controls front/back side
-  const cardInfo = cardConfig[cardNetwork] || {};
+  const cardInfo = cardConfig[cardNetwork.toLowerCase()] || {};
   return (
     <>
       <div className="flex gap-3 flex-col items-center justify-center">
@@ -87,7 +87,7 @@ const Cards = ({
                     </div>
                   </div>
                   <div>
-                    <div className="font-semibold text-base">
+                    <div className="uppercase font-semibold text-base">
                       {toTitleCase(cardName) || ""}
                     </div>
                   </div>
