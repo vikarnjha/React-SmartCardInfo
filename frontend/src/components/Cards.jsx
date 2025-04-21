@@ -25,6 +25,13 @@ const cardConfig = {
   chip: { icon: chip },
   carddefault: { icon: carddefault },
 };
+const toTitleCase = (str) => {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
 
 const Cards = ({
   cardNumber,
@@ -51,8 +58,8 @@ const Cards = ({
               className="w-96 h-60 rounded-2xl shadow-2xl text-white relative p-6 flex flex-col justify-between cursor-pointer select-none"
               style={{ backgroundImage: `url(${carddefault})` }}
             >
-              <div className="flex justify-between items-start uppercase">
-                <div>{cardBrand || "BANK NAME"}</div>
+              <div className="flex justify-between items-start">
+                <div>{toTitleCase(cardBrand) || ""}</div>
                 <div className="flex justify-between items-end">
                   <img
                     src={nfc}
@@ -76,12 +83,12 @@ const Cards = ({
                   <div className="flex justify-between items-center gap-2.5">
                     <div className="uppercase opacity-70">Valid Upto</div>
                     <div className="font-semibold text-base">
-                      {cardExpiry || "MM/YY"}
+                      {cardExpiry || ""}
                     </div>
                   </div>
                   <div>
-                    <div className="font-semibold text-base uppercase">
-                      {cardName || "JOHN DOE"}
+                    <div className="font-semibold text-base">
+                      {toTitleCase(cardName) || ""}
                     </div>
                   </div>
                 </div>
@@ -91,8 +98,8 @@ const Cards = ({
                       <img src={cardInfo.icon} alt="icon" className="h-14" />
                     )}
                   </div>
-                  <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
-                    {cardType || "Type"}
+                  <div className="opacity-110 font-semibold text-center mt-0.5">
+                    {toTitleCase(cardType) || ""}
                   </div>
                 </div>
               </div>
@@ -102,7 +109,7 @@ const Cards = ({
             <div className="w-96 h-60 rounded-xl bg-gradient-to-br from-[#01081F] to-[#021740] text-white p-5 shadow-xl font-sans cursor-pointer select-none">
               {/* Bank Name */}
               <div className="bg-[#0A1A3A] rounded-md px-4 py-2 mb-4 text-xs tracking-wide border border-[#0F2C59] font-medium shadow-inner">
-                {cardBrand || ""}
+                {toTitleCase(cardBrand) || ""}
               </div>
 
               {/* Magnetic Strip */}
@@ -115,7 +122,7 @@ const Cards = ({
                   <div className="flex justify-between items-center bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-300 text-xs font-semibold shadow-sm tracking-wide">
                     Signature{" "}
                     <div className="font-[cursive] italic text-sm text-gray-800 tracking-wide opacity-70">
-                      {cardName || "JOHN DOE"}
+                      {toTitleCase(cardName) || ""}
                     </div>
                   </div>
                 </div>
@@ -132,7 +139,7 @@ const Cards = ({
           )}
         </div>
         {/* Buttons */}
-        <div className="flex justify-between mt-3 text-sm text-white">
+        <div className="flex justify-between gap-3 text-sm text-white">
           <button
             onClick={onEdit}
             className="flex items-center gap-1 bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded cursor-pointer"
