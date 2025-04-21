@@ -8,7 +8,10 @@ const cardSchema = new mongoose.Schema({
   cardType: String,
   cardNetwork: String,
   cardBrand: String,
-  date: Date.now,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 const UserSchema = new mongoose.Schema({
