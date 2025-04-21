@@ -1,5 +1,16 @@
 import mongoose from "mongoose";
 
+const cardSchema = new mongoose.Schema({
+  cardNumber: String,
+  cardExpiry: String,
+  cardname: String,
+  cardSecurity: String,
+  cardType: String,
+  cardNetwork: String,
+  cardBrand: String,
+  date: Date.now,
+});
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -18,9 +29,9 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  cards: [cardSchema],
 });
 
 const userModel = mongoose.models.user || mongoose.model("user", UserSchema);
 
 export default userModel;
-
