@@ -1,0 +1,62 @@
+[
+  {
+    "cardNumber": "4166445002390478",
+    "cardExpiry": "01/31",
+    "cardName": "Vikarn",
+    "cardSecurity": "123",
+    "cardType": "Debit",
+    "cardNetwork": "Visa",
+    "cardBrand": "Axis Bank",
+    "date": "2025-04-19T17:05:25.375Z"
+  },
+  {
+    "cardNumber": "4166445002340987",
+    "cardExpiry": "01/32",
+    "cardName": "VJ",
+    "cardSecurity": "321",
+    "cardType": "Credit",
+    "cardNetwork": "Visa",
+    "cardBrand": "Kotak Mahindra Bank",
+    "date": "2025-04-19T17:05:25.375Z"
+  },
+  {
+    "cardNumber": "5522889001234567",
+    "cardExpiry": "03/30",
+    "cardName": "Aarav",
+    "cardSecurity": "234",
+    "cardType": "Debit",
+    "cardNetwork": "Mastercard",
+    "cardBrand": "HDFC Bank",
+    "date": "2025-04-19T17:10:00.000Z"
+  },
+  {
+    "cardNumber": "378282246310005",
+    "cardExpiry": "12/28",
+    "cardName": "Meera",
+    "cardSecurity": "3456",
+    "cardType": "Credit",
+    "cardNetwork": "American Express",
+    "cardBrand": "SBI Card",
+    "date": "2025-04-19T17:11:00.000Z"
+  },
+  {
+    "cardNumber": "6072220000001234",
+    "cardExpiry": "09/29",
+    "cardName": "Rohan",
+    "cardSecurity": "789",
+    "cardType": "Debit",
+    "cardNetwork": "RuPay",
+    "cardBrand": "Union Bank",
+    "date": "2025-04-19T17:12:00.000Z"
+  },
+  {
+    "cardNumber": "30569309025904",
+    "cardExpiry": "08/27",
+    "cardName": "Anjali",
+    "cardSecurity": "901",
+    "cardType": "Credit",
+    "cardNetwork": "Diners Club",
+    "cardBrand": "Yes Bank",
+    "date": "2025-04-19T17:13:00.000Z"
+  }
+]

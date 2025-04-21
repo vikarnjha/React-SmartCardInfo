@@ -1,34 +1,41 @@
 import { useState } from "react";
 import {
-  visa,
-  mastercard,
-  rupay,
-  amex,
-  diners,
-  discover,
-  jcb,
+  // visa,
+  // mastercard,
+  // rupay,
+  // amex,
+  // diners,
+  // discover,
+  // jcb,
   nfc,
   chip,
   carddefault,
 } from "../config/cardIcons";
 
-const cardConfig = {
-  visa: { icon: visa },
-  mastercard: { icon: mastercard },
-  rupay: { icon: rupay },
-  "american express": { icon: amex },
-  "diners club": { icon: diners },
-  discover: { icon: discover },
-  jcb: { icon: jcb },
-  nfc: { icon: nfc },
-  chip: { icon: chip },
-  carddefault: { icon: carddefault },
-};
+// const cardConfig = {
+//   visa: { icon: visa },
+//   mastercard: { icon: mastercard },
+//   rupay: { icon: rupay },
+//   "american express": { icon: amex },
+//   "diners club": { icon: diners },
+//   discover: { icon: discover },
+//   jcb: { icon: jcb },
+//   nfc: { icon: nfc },
+//   chip: { icon: chip },
+//   carddefault: { icon: carddefault },
+// };
 
-const Cards = () => {
+const Cards = ({
+  cardNumber,
+  cardExpiry,
+  cardName,
+  cardSecurity,
+  cardType,
+  cardNetwork,
+  cardBrand,
+}) => {
   const [isFront, setIsFront] = useState(true); // 👈 Controls front/back side
-  const cardInfo = cardConfig[visa] || {};
-  //   cardConfig[cardNetwork] || {};
+
   return (
     <>
       <div
@@ -43,8 +50,7 @@ const Cards = () => {
             style={{ backgroundImage: `url(${carddefault})` }}
           >
             <div className="flex justify-between items-start">
-              <div>{"BANK NAME"}</div>
-              {/* cardBrand ||  */}
+              <div>{cardBrand || "BANK NAME"}</div>
               <div className="flex justify-between items-end">
                 <img
                   src={nfc}
@@ -61,34 +67,28 @@ const Cards = () => {
               />
             </div>
             <div className="text-center text-2xl tracking-widest font-mono mb-3">
-              {"0123 4567 8910 1112"}
-              {/* cardNumber ||  */}
+              {cardNumber || "0123 4567 8910 1112"}
             </div>
             <div className="flex justify-between items-center text-sm font-light">
               <div>
                 <div className="flex justify-between items-center gap-2.5">
                   <div className="uppercase opacity-70">Valid Upto</div>
                   <div className="font-semibold text-base">
-                    {"MM/YY"}
-                    {/* cardExpire ||  */}
+                    {cardExpiry || "MM/YY"}
                   </div>
                 </div>
                 <div>
                   <div className="font-semibold text-base">
-                    {"JOHN DOE"}
-                    {/* cardName ||  */}
+                    {cardName || "JOHN DOE"}
                   </div>
                 </div>
               </div>
               <div>
                 <div className="w-12 h-8 bg-white rounded-md flex items-center justify-center">
-                  {cardInfo?.icon && (
-                    <img src={cardInfo.icon} alt="icon" className="h-14" />
-                  )}
+                  <img src={cardNetwork} alt="icon" className="h-14" />
                 </div>
                 <div className="uppercase opacity-110 font-semibold text-center mt-0.5">
-                  {"Type"}
-                  {/* cardType ||  */}
+                  {cardType || "Type"}
                 </div>
               </div>
             </div>
@@ -98,8 +98,7 @@ const Cards = () => {
           <div className="w-96 h-60 rounded-xl bg-gradient-to-br from-[#01081F] to-[#021740] text-white p-5 shadow-xl font-sans cursor-pointer select-none">
             {/* Bank Name */}
             <div className="bg-[#0A1A3A] rounded-md px-4 py-2 mb-4 text-xs tracking-wide border border-[#0F2C59] font-medium shadow-inner">
-              {""}
-              {/* cardBrand ||  */}
+              {cardBrand || ""}
             </div>
 
             {/* Magnetic Strip */}
@@ -112,8 +111,7 @@ const Cards = () => {
                 <div className="flex justify-between items-center bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-300 text-xs font-semibold shadow-sm tracking-wide">
                   Signature{" "}
                   <div className="font-[cursive] italic text-sm text-gray-800 tracking-wide opacity-70">
-                    {"JOHN DOE"}
-                    {/* cardName ||  */}
+                    {cardName || "JOHN DOE"}
                   </div>
                 </div>
               </div>
@@ -121,8 +119,7 @@ const Cards = () => {
               {/* CVV Box */}
               <div className="w-20">
                 <div className="bg-white text-black h-12 rounded-md px-3 py-2 border border-gray-300 text-xs font-semibold shadow-sm text-center tracking-widest">
-                  CVV <div className="opacity-70">{"123"}</div>
-                  {/* cardSecurity ||  */}
+                  CVV <div className="opacity-70">{cardSecurity || "123"}</div>
                 </div>
               </div>
             </div>
