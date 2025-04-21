@@ -5,16 +5,17 @@ import cardsData from '../cards.json'
 const SavedCards = () => {
   return (
     <>
-    {cardsData.map((cards, idx) => (
+    {cardsData.map((card, idx) => (
             <Cards
               key={idx}
-              cardNumber={cards.cardNumber}
-              cardExpiry={cards.cardExpiry}
-              cardName={cards.cardName}
-              cardSecurity={cards.cardSecurity}
-              cardType={cards.cardType}
-              cardNetwork={cards.cardNetwork}
-              cardBrand={cards.cardBrand}
+              cardNumber={card.cardNumber}
+              cardExpiry={card.cardExpiry}
+              cardName={card.cardName}
+              cardSecurity={card.cardSecurity}
+              cardType={card.cardType}
+              cardNetwork={card.cardNetwork}
+              cardBrand={card.cardBrand}
+              
             />
           ))}
     </>

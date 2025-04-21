@@ -5,7 +5,7 @@
     "cardName": "Vikarn",
     "cardSecurity": "123",
     "cardType": "Debit",
-    "cardNetwork": "Visa",
+    "cardNetwork": "visa",
     "cardBrand": "Axis Bank",
     "date": "2025-04-19T17:05:25.375Z"
   },
@@ -15,7 +15,7 @@
     "cardName": "VJ",
     "cardSecurity": "321",
     "cardType": "Credit",
-    "cardNetwork": "Visa",
+    "cardNetwork": "visa",
     "cardBrand": "Kotak Mahindra Bank",
     "date": "2025-04-19T17:05:25.375Z"
   },
@@ -25,7 +25,7 @@
     "cardName": "Aarav",
     "cardSecurity": "234",
     "cardType": "Debit",
-    "cardNetwork": "Mastercard",
+    "cardNetwork": "mastercard",
     "cardBrand": "HDFC Bank",
     "date": "2025-04-19T17:10:00.000Z"
   },
@@ -35,7 +35,7 @@
     "cardName": "Meera",
     "cardSecurity": "3456",
     "cardType": "Credit",
-    "cardNetwork": "American Express",
+    "cardNetwork": "american express",
     "cardBrand": "SBI Card",
     "date": "2025-04-19T17:11:00.000Z"
   },
@@ -45,7 +45,7 @@
     "cardName": "Rohan",
     "cardSecurity": "789",
     "cardType": "Debit",
-    "cardNetwork": "RuPay",
+    "cardNetwork": "rupay",
     "cardBrand": "Union Bank",
     "date": "2025-04-19T17:12:00.000Z"
   },
@@ -55,7 +55,7 @@
     "cardName": "Anjali",
     "cardSecurity": "901",
     "cardType": "Credit",
-    "cardNetwork": "Diners Club",
+    "cardNetwork": "diners club",
     "cardBrand": "Yes Bank",
     "date": "2025-04-19T17:13:00.000Z"
   },
@@ -65,7 +65,7 @@
     "cardName": "Anjali",
     "cardSecurity": "901",
     "cardType": "Credit",
-    "cardNetwork": "Diners Club",
+    "cardNetwork": "diners club",
     "cardBrand": "Yes Bank",
     "date": "2025-04-19T17:13:00.000Z"
   },
@@ -75,7 +75,7 @@
     "cardName": "Anjali",
     "cardSecurity": "901",
     "cardType": "Credit",
-    "cardNetwork": "Diners Club",
+    "cardNetwork": "diners club",
     "cardBrand": "Yes Bank",
     "date": "2025-04-19T17:13:00.000Z"
   },
@@ -85,7 +85,7 @@
     "cardName": "Anjali",
     "cardSecurity": "901",
     "cardType": "Credit",
-    "cardNetwork": "Diners Club",
+    "cardNetwork": "diners club",
     "cardBrand": "Yes Bank",
     "date": "2025-04-19T17:13:00.000Z"
   },
@@ -95,7 +95,7 @@
     "cardName": "Anjali",
     "cardSecurity": "901",
     "cardType": "Credit",
-    "cardNetwork": "Diners Club",
+    "cardNetwork": "diners club",
     "cardBrand": "Yes Bank",
     "date": "2025-04-19T17:13:00.000Z"
   }
