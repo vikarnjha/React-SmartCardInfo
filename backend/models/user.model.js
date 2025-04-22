@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const cardSchema = new mongoose.Schema({
   cardNumber: String,
   cardExpiry: String,
-  cardname: String,
+  cardName: String,
   cardSecurity: String,
   cardType: String,
   cardNetwork: String,

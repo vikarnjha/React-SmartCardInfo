@@ -19,4 +19,25 @@ cardRouter.get("/cards/email/:email", async (req, res) => {
   }
 });
 
+cardRouter.post("/cards/email/:email", async (req, res) => {
+  try {
+    const { card } = req.body;
+    const email = req.params.email;
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    user.cards.push(card);
+    await user.save();
+
+    res.status(200).json({ message: "Card saved successfully", card });
+  } catch (err) {
+    console.error("Error saving card:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
 export { cardRouter };
