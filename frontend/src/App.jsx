@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import Profile from "./components/Profile";
 import Contact from "./components/Contact";
 import Auth from "./components/Auth";
-import SavedCards from "./components/SavedCards"
+import SavedCards from "./components/SavedCards";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 import "./App.css";
@@ -36,9 +36,9 @@ function App() {
           path="/cards"
           element={
             <ProtectedRoute>
-              <div className="flex flex-col h-full bg-gradient-to-br from-gray-900 to-gray-800">
+              <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 to-gray-800">
                 <Navbar />
-                <div className="flex flex-wrap justify-center gap-5 mt-5 mb-5">
+                <div className="flex flex-wrap justify-center gap-5 mt-5 mb-5 flex-grow">
                   <SavedCards />
                 </div>
                 <Footer />
