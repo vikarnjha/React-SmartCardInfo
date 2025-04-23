@@ -13,8 +13,7 @@ cardRouter.get("/cards/email/:email", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     // Decrypt each cardNumber
-    // decrypt each saved cardNumber before returning
-    const decryptedCards = user.cards.map(c => ({
+    const decryptedCards = user.cards.map((c) => ({
       _id: c._id,
       cardName: c.cardName,
       cardExpire: c.cardExpire,
@@ -23,7 +22,7 @@ cardRouter.get("/cards/email/:email", async (req, res) => {
       cardType: c.cardType,
       cardBrand: c.cardBrand,
       date: c.date,
-      cardNumber: decryptCard(c.cardNumber, c.iv)
+      cardNumber: decryptCard(c.cardNumber, c.iv),
     }));
 
     res.json(decryptedCards);
