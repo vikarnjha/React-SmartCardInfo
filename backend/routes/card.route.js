@@ -21,13 +21,22 @@ cardRouter.get("/cards/email/:email", async (req, res) => {
 
 cardRouter.post("/cards/email/:email", async (req, res) => {
   try {
-    const { card } = req.body;
+    const { cardNumber, cardName, cardExpire, cardSecurity, cardNetwork, cardType, cardBrand } = req.body;
     const email = req.params.email;
 
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
+    const card = {
+      cardNumber,
+      cardName,
+      cardExpire,
+      cardSecurity,
+      cardNetwork,
+      cardType,
+      cardBrand,
+    };
 
     user.cards.push(card);
     await user.save();
