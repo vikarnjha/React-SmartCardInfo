@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useAuth } from "../context/AuthContext";
+
 import {
   visa,
   mastercard,
@@ -11,7 +14,7 @@ import {
   chip,
   carddefault,
 } from "../config/cardIcons";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const cardConfig = {
   visa: { icon: visa },
@@ -49,8 +52,31 @@ function CardForm() {
   const [apiError, setApiError] = useState("");
   const [isFront, setIsFront] = useState(true); // 👈 Controls front/back side
 
-  const handleSaveCard = () => {
-    toast.info("Save card functionality not implemented yet!");
+  const { user } = useAuth();
+  const handleSaveCard = async (e) => {
+    e.preventDefault();
+    if (!cardNumber || !cardName || !cardExpire || !cardSecurity) {
+      return toast.warn("All fields are required!");
+    }
+    try {
+      const response = await axios.post(
+        `https://react-smartcardinfo.onrender.com/api/cards/email/${user.email}`,
+        {
+          cardNumber,
+          cardName,
+          cardExpire,
+          cardSecurity,
+          cardNetwork,
+          cardType,
+          cardBrand,
+        }
+      );
+      if (response.data.success) {
+        toast.success("Card saved successfully!");
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Card save failed!");
+    }
   };
 
   const generateRandomCard = () => {
@@ -319,7 +345,7 @@ function CardForm() {
             {/* Save Card Button */}
             <div className="pt-4">
               <button
-                type="save-card"
+                type="submit"
                 className="w-1/2 flex justify-center align-center  py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105"
                 onClick={handleSaveCard}
               >
