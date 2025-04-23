@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 
 import {
   visa,
@@ -14,7 +15,6 @@ import {
   chip,
   carddefault,
 } from "../config/cardIcons";
-import { ToastContainer, toast } from "react-toastify";
 
 const cardConfig = {
   visa: { icon: visa },
@@ -71,9 +71,15 @@ function CardForm() {
           cardBrand,
         }
       );
-      if (response.data.success) {
-        toast.success("Card saved successfully!");
-      }
+      toast.success("Card saved successfully!");
+      setCardNumber("");
+      setCardName("");
+      setCardExpire("");
+      setCardSecurity("");
+      setCardNetwork("");
+      setCardType("");
+      setCardBrand("");
+      setIsFront(true);
     } catch (error) {
       toast.error(error.response?.data?.message || "Card save failed!");
     }
