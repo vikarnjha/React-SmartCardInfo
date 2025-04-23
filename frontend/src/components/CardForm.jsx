@@ -71,6 +71,7 @@ function CardForm() {
           cardBrand,
         }
       );
+      console.log(response.data);
       toast.success("Card saved successfully!");
       setCardNumber("");
       setCardName("");
