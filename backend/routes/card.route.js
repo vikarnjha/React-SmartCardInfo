@@ -21,7 +21,15 @@ cardRouter.get("/cards/email/:email", async (req, res) => {
 
 cardRouter.post("/cards/email/:email", async (req, res) => {
   try {
-    const { cardNumber, cardName, cardExpire, cardSecurity, cardNetwork, cardType, cardBrand } = req.body;
+    const {
+      cardNumber,
+      cardName,
+      cardExpire,
+      cardSecurity,
+      cardNetwork,
+      cardType,
+      cardBrand,
+    } = req.body;
     const email = req.params.email;
 
     const user = await User.findOne({ email });
@@ -48,5 +56,28 @@ cardRouter.post("/cards/email/:email", async (req, res) => {
   }
 });
 
+cardRouter.delete("/cards/email/:email/:cardId", async (req, res) => {
+  const { email, cardId } = req.params;
+
+  try {
+    const result = await User.updateOne(
+      { email },
+      {
+        $pull: {
+          cards: { _id: cardId },
+        },
+      }
+    );
+
+    if (result.modifiedCount === 0) {
+      return res.status(404).json({ error: "Card or user not found" });
+    }
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
 
 export { cardRouter };
