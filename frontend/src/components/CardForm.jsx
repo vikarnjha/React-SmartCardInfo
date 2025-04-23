@@ -73,6 +73,10 @@ function CardForm() {
       );
       console.log(response.data);
       toast.success("Card saved successfully!");
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Card save failed!");
+    }
+    finally {
       setCardNumber("");
       setCardName("");
       setCardExpire("");
@@ -81,8 +85,6 @@ function CardForm() {
       setCardType("");
       setCardBrand("");
       setIsFront(true);
-    } catch (error) {
-      toast.error(error.response?.data?.message || "Card save failed!");
     }
   };
 

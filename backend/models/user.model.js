@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const cardSchema = new mongoose.Schema({
   cardNumber: String,
-  cardExpiry: String,
+  cardExpire: String,
   cardName: String,
   cardSecurity: String,
   cardType: String,
