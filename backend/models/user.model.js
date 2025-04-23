@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 
 const cardSchema = new mongoose.Schema({
   cardNumber: String,
+  encryptedNumber: String,  // from encryptCard().data
+  iv: String,               // from encryptCard().iv 
   cardExpire: String,
   cardName: String,
   cardSecurity: String,
