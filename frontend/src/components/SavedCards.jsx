@@ -37,6 +37,7 @@ const SavedCards = (email) => {
           cardType={card.cardType}
           cardNetwork={card.cardNetwork}
           cardBrand={card.cardBrand}
+          cardId={card._id}
         />
       ))}
     </>

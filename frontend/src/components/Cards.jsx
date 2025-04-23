@@ -1,17 +1,22 @@
 import { useState } from "react";
 import { FaCopy, FaTrash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
+import Loading from "../loading/Loading";
+
+
 import {
-  visa,
-  mastercard,
-  rupay,
   amex,
+  carddefault,
+  chip,
   diners,
   discover,
   jcb,
+  mastercard,
   nfc,
-  chip,
-  carddefault,
+  rupay,
+  visa,
 } from "../config/cardIcons";
 
 const cardConfig = {
@@ -57,7 +62,6 @@ const handleCardNumber = (e) => {
     formattedValue = rawValue.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
   }
   return formattedValue;
-
 };
 const Cards = ({
   cardNumber,
@@ -67,7 +71,42 @@ const Cards = ({
   cardType,
   cardNetwork,
   cardBrand,
+  cardId,
 }) => {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { user } = useAuth();
+  // useEffect(() => {
+    const onDelete = async () => {
+      setIsLoading(true);
+      await fetch(
+        `http://localhost:5000/api/cards/email/${user.email}/${cardId}`,
+        { method: "DELETE" }
+      )
+        .then((res) => {
+          if (!res.ok) throw new Error("Delete failed");
+          return res.json();
+        })
+        .then((json) => {
+          console.log(json);
+          toast.success("Card deleted successfully!");
+          setTimeout(() => {
+            navigate(0);
+          }, 1000);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.error(err);
+          setIsLoading(false);
+          toast.error("Could not delete card: " + err.message);
+        });
+    };
+    // return () => {
+    //   onDelete();
+    // };
+  // }, []);
+
   const onCopy = () => {
     const cardDetails = `Card Number: ${cardNumber}\nCard Name: ${cardName}\nExpiry: ${cardExpire}\nCVV: ${cardSecurity}`;
     navigator.clipboard.writeText(cardDetails);
@@ -77,6 +116,7 @@ const Cards = ({
   const cardInfo = cardConfig[cardNetwork.toLowerCase()] || {};
   return (
     <>
+    {isLoading && <Loading />} 
       <div className="flex gap-3 flex-col items-center justify-center">
         <div onClick={() => setIsFront(!isFront)}>
           {/* Card Preview */}
@@ -181,14 +221,14 @@ const Cards = ({
             <FaCopy /> Copy
           </button>
           <button
-            // onClick={onDelete}
+            onClick={onDelete}
             className="flex items-center gap-1 bg-red-500 hover:bg-red-600 px-3 py-1 rounded cursor-pointer"
           >
             <FaTrash /> Delete
           </button>
         </div>
       </div>
-      <ToastContainer position="top-right" autoClose={2000} />
+      <ToastContainer position="top-right" autoClose={1000} />
     </>
   );
 };
