@@ -27,7 +27,7 @@ const SavedCards = (email) => {
         <Cards
           key={idx}
           cardNumber={card.cardNumber}
-          cardExpiry={card.cardExpiry}
+          cardExpire={card.cardExpire}
           cardName={card.cardName}
           cardSecurity={card.cardSecurity}
           cardType={card.cardType}
