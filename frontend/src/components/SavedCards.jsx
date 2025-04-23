@@ -23,7 +23,7 @@ const SavedCards = (email) => {
     };
 
     fetchCards();
-  }, [email]);
+  }, [email, user.email]);
   return (
     <>
     {isLoading && <Loading />} 
