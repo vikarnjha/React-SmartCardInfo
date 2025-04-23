@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { FaEdit, FaCopy, FaTrash } from "react-icons/fa";
+import { FaCopy, FaTrash } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 import {
   visa,
   mastercard,
@@ -55,8 +56,6 @@ const handleCardNumber = (e) => {
     // Default (Visa, MasterCard, etc.): 4-4-4-4
     formattedValue = rawValue.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
   }
-  // setCardNumber(formattedValue);
-  // cardNumber = formattedValue;
   return formattedValue;
 
 };
@@ -68,10 +67,12 @@ const Cards = ({
   cardType,
   cardNetwork,
   cardBrand,
-  onEdit,
-  onCopy,
-  onDelete,
 }) => {
+  const onCopy = () => {
+    const cardDetails = `Card Number: ${cardNumber}\nCard Name: ${cardName}\nExpiry: ${cardExpire}\nCVV: ${cardSecurity}`;
+    navigator.clipboard.writeText(cardDetails);
+    toast.info("Card details copied to clipboard!");
+  };
   const [isFront, setIsFront] = useState(true); // 👈 Controls front/back side
   const cardInfo = cardConfig[cardNetwork.toLowerCase()] || {};
   return (
@@ -167,12 +168,12 @@ const Cards = ({
         </div>
         {/* Buttons */}
         <div className="flex justify-between gap-3 text-sm text-white">
-          <button
+          {/* <button
             onClick={onEdit}
             className="flex items-center gap-1 bg-yellow-500 hover:bg-yellow-600 px-3 py-1 rounded cursor-pointer"
           >
             <FaEdit /> Edit
-          </button>
+          </button> */}
           <button
             onClick={onCopy}
             className="flex items-center gap-1 bg-blue-500 hover:bg-blue-600 px-3 py-1 rounded cursor-pointer"
@@ -180,13 +181,14 @@ const Cards = ({
             <FaCopy /> Copy
           </button>
           <button
-            onClick={onDelete}
+            // onClick={onDelete}
             className="flex items-center gap-1 bg-red-500 hover:bg-red-600 px-3 py-1 rounded cursor-pointer"
           >
             <FaTrash /> Delete
           </button>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={2000} />
     </>
   );
 };

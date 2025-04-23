@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import Cards from "./Cards";
 import { useAuth } from "../context/AuthContext";
-// import cardsData from '../cards.json'
+import Loading from "../loading/Loading";
 
 const SavedCards = (email) => {
   const [cards, setCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { user } = useAuth();
   useEffect(() => {
     const fetchCards = async () => {
@@ -16,6 +17,8 @@ const SavedCards = (email) => {
         setCards(data);
       } catch (err) {
         console.error("Failed to fetch cards", err);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -23,6 +26,7 @@ const SavedCards = (email) => {
   }, [email]);
   return (
     <>
+    {isLoading && <Loading />} 
       {cards.map((card, idx) => (
         <Cards
           key={idx}
