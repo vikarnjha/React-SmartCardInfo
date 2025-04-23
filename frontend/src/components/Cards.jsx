@@ -28,11 +28,38 @@ const cardConfig = {
 const toTitleCase = (str) => {
   return str
     .toLowerCase()
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 };
 
+const handleCardNumber = (e) => {
+  let rawValue = e.replace(/\D/g, "");
+
+  // Format the number
+  let formattedValue = "";
+
+  if (rawValue.length === 14) {
+    // Diners Club: 4-6-4
+    formattedValue = rawValue.replace(
+      /^(\d{0,4})(\d{0,6})?(\d{0,4})?/,
+      (_, g1, g2, g3) => [g1, g2, g3].filter(Boolean).join(" ")
+    );
+  } else if (rawValue.length === 15) {
+    // American Express: 4-6-5
+    formattedValue = rawValue.replace(
+      /^(\d{0,4})(\d{0,6})?(\d{0,5})?/,
+      (_, g1, g2, g3) => [g1, g2, g3].filter(Boolean).join(" ")
+    );
+  } else {
+    // Default (Visa, MasterCard, etc.): 4-4-4-4
+    formattedValue = rawValue.replace(/(\d{4})(?=\d)/g, "$1 ").trim();
+  }
+  // setCardNumber(formattedValue);
+  // cardNumber = formattedValue;
+  return formattedValue;
+
+};
 const Cards = ({
   cardNumber,
   cardExpiry,
@@ -76,7 +103,7 @@ const Cards = ({
                 />
               </div>
               <div className="text-center text-2xl tracking-widest font-mono mb-3">
-                {cardNumber || "0123 4567 8910 1112"}
+                {handleCardNumber(cardNumber) || "0123 4567 8910 1112"}
               </div>
               <div className="flex justify-between items-center text-sm font-light">
                 <div>
