@@ -62,7 +62,7 @@ const handleCardNumber = (e) => {
 };
 const Cards = ({
   cardNumber,
-  cardExpiry,
+  cardExpire,
   cardName,
   cardSecurity,
   cardType,
@@ -110,7 +110,7 @@ const Cards = ({
                   <div className="flex justify-between items-center gap-2.5">
                     <div className="uppercase opacity-70">Valid Upto</div>
                     <div className="font-semibold text-base">
-                      {cardExpiry || ""}
+                      {cardExpire || ""}
                     </div>
                   </div>
                   <div>
