@@ -6,7 +6,6 @@ import { sendOtpEmail } from "../utils/email.js";
 const resetRouter = express.Router();
 
 // a) Request OTP
-
 resetRouter.post("/forgot-password/request-otp", async (req, res) => {
   const email = req.body.email?.trim().toLowerCase();
 
@@ -46,8 +45,9 @@ resetRouter.post("/forgot-password/reset", async (req, res) => {
       return res
         .status(404)
         .json({ success: false, message: "User not found" });
+
     // Check OTP and expiry
-    else if (
+    if (
       user.resetOTP !== otp ||
       !user.resetOTPExpiry ||
       user.resetOTPExpiry < Date.now()
