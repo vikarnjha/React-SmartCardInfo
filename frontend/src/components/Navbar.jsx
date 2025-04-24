@@ -15,7 +15,7 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-lg font-semibold">
-          {["Home", "Cards", "Contact", "Profile"].map((item, index) => (
+          {["Home", "Cards", "Contact", "About", "Profile"].map((item, index) => (
             <li key={index}>
               <a
                 href="#"
@@ -27,6 +27,8 @@ const Navbar = () => {
                   } else if (item === "Home") {
                     navigate(`/${item.toLowerCase()}`);
                   } else if (item === "Contact") {
+                    navigate(`/${item.toLowerCase()}`);
+                  } else if (item === "About") {
                     navigate(`/${item.toLowerCase()}`);
                   }
                 }}
@@ -49,19 +51,26 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <ul className="absolute top-14 right-4 bg-gray-900 text-white shadow-lg p-4 rounded-md w-40 flex flex-col gap-4 font-semibold">
-            {["Home", "Cards", "Contact", "Profile"].map((item, index) => (
+            {["Home", "Cards", "Contact", "About", "Profile"].map((item, index) => (
               <li key={index}>
                 <a
                   href="#"
                   onClick={() => {
                     if (item === "Profile") {
                       navigate(`/${item.toLowerCase()}`);
+                      setIsOpen(false);
                     } else if (item === "Cards") {
                       navigate(`/${item.toLowerCase()}`);
+                      setIsOpen(false);
                     } else if (item === "Home") {
                       navigate(`/${item.toLowerCase()}`);
+                      setIsOpen(false);
                     } else if (item === "Contact") {
                       navigate(`/${item.toLowerCase()}`);
+                      setIsOpen(false);
+                    } else if (item === "About") {
+                      navigate(`/${item.toLowerCase()}`);
+                      setIsOpen(false);
                     }
                   }}
                   className="text-white hover:text-blue-300 transition-all duration-300 relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-blue-300 hover:after:w-full after:transition-all after:duration-300"
