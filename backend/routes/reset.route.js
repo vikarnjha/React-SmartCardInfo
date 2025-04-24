@@ -11,27 +11,24 @@ resetRouter.post("/forgot-password/request-otp", async (req, res) => {
   const { email } = req.body;
   try {
     const user = await User.findOne({ email });
-    if (!user) {
+    if (user) {
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      const otpExpiry = Date.now() + 15 * 60 * 1000; // 15 minutes
+
+      user.resetOTP = otp;
+      user.resetOTPExpiry = otpExpiry;
+      await user.save();
+
+      await sendOtpEmail(email, otp);
+
       return res
-        .status(404)
-        .json({ success: false, message: "User not found" });
+        .status(200)
+        .json({ success: true, message: "OTP sent to email" });
+    } else {
+      return res.json({ success: false, message: "User not found" });
     }
-
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const otpExpiry = Date.now() + 15 * 60 * 1000; // 15 minutes
-
-    user.resetOTP = otp;
-    user.resetOTPExpiry = otpExpiry;
-    await user.save();
-
-    await sendOtpEmail(email, otp);
-
-    return res
-      .status(200)
-      .json({ success: true, message: "OTP sent to email" });
   } catch (err) {
-    console.error("OTP request error:", err);
-    return res.status(500).json({ success: false, message: "Server error" });
+    console.error(err);
   }
 });
 
