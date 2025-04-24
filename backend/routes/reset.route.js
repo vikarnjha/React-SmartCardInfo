@@ -6,17 +6,21 @@ import { sendOtpEmail } from "../utils/email.js";
 const resetRouter = express.Router();
 
 // a) Request OTP
-// a) Request OTP
+
 resetRouter.post("/forgot-password/request-otp", async (req, res) => {
-  const { email } = req.body;
+  const email = req.body.email?.trim().toLowerCase();
+
   try {
     const user = await User.findOne({ email });
+    console.log("User found:", user);
+
     if (!user) {
+      console.log("User not found for email:", email);
       return res
         .status(404)
         .json({ success: false, message: "User not found" });
     }
-    
+
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     const otpExpiry = Date.now() + 15 * 60 * 1000; // 15 minutes
 
