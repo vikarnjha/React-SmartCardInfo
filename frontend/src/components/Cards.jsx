@@ -81,7 +81,7 @@ const Cards = ({
     const onDelete = async () => {
       setIsLoading(true);
       await fetch(
-        `http://localhost:5000/api/cards/email/${user.email}/${cardId}`,
+        `https://react-smartcardinfo.onrender.com/api/cards/email/${user.email}/${cardId}`,
         { method: "DELETE" }
       )
         .then((res) => {
