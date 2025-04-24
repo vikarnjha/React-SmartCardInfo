@@ -6,7 +6,7 @@ import Profile from "./components/Profile";
 import Contact from "./components/Contact";
 import Auth from "./components/Auth";
 import SavedCards from "./components/SavedCards";
-import ProtectedRoute from "./components/ProtectedRoute";
+import { ProtectedRoute, HomeRoute } from "./components/ProtectedRoute";
 import AboutUs from "./components/AboutUs";
 import "./App.css";
 
@@ -15,7 +15,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public Route */}
-        <Route path="/" element={<Auth />} />
+        <Route
+          path="/"
+          element={
+            <HomeRoute>
+              <Auth />
+            </HomeRoute>
+          }
+        />
 
         {/* Protected Routes */}
         <Route
