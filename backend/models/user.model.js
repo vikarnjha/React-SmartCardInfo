@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const cardSchema = new mongoose.Schema({
   cardNumber: String,
-  encryptedNumber: String,  // from encryptCard().data
-  iv: String,               // from encryptCard().iv 
+  encryptedNumber: String, // from encryptCard().data
+  iv: String, // from encryptCard().iv
   cardExpire: String,
   cardName: String,
   cardSecurity: String,
@@ -33,6 +33,12 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
+  },
+  resetOTP: {
+    type: String,
+  },
+  resetOTPExpiry: {
+    type: Date,
   },
   cards: [cardSchema],
 });

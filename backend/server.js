@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import { connectDB } from "./configs/mongo.js";
 import {authRouter} from "./routes/auth.route.js"
 import {cardRouter} from "./routes/card.route.js"
+import {resetRouter} from "./routes/reset.route.js"
 
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use(
 
 // Routes
 app.use("/api", cardRouter);
+app.use("/api/auth", resetRouter);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
