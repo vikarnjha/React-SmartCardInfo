@@ -1,30 +1,31 @@
-import { FaUserCircle, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
 
 const Profile = () => {
   const { user, setUser } = useAuth();
-  const [passwords, setPasswords] = useState({
-    currentPassword: "",
-    newPassword: "",
-    confirmNewPassword: "",
-  });
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
 
-  const [showPassword, setShowPassword] = useState({
-    currentPassword: false,
-    newPassword: false,
-    confirmNewPassword: false,
-  });
+  const API_URL = "https://react-smartcardinfo.onrender.com/api/auth";
+  // const API_URL = "http://localhost:5000/api/auth";
 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      await axios.post("https://react-smartcardinfo.onrender.com/api/auth/logout", null, {
-        withCredentials: true, // Must be set to send cookies
-      });
+      await axios.post(
+        "https://react-smartcardinfo.onrender.com/api/auth/logout",
+        null,
+        {
+          withCredentials: true, // Must be set to send cookies
+        }
+      );
 
       setUser(null);
       navigate("/");
@@ -33,15 +34,37 @@ const Profile = () => {
     }
   };
 
-  const handleChange = (e) => {
-    setPasswords({ ...passwords, [e.target.name]: e.target.value });
-  };
+  const handleChangePassword = async () => {
+    if (!oldPassword || !newPassword || !confirmNewPassword) {
+      return toast.warn("All fields are required!");
+    }
+    if (newPassword !== confirmNewPassword) {
+      return toast.warn("Passwords do not match!");
+    }
+    try {
+      const response = await axios.post(
+        `${API_URL}/change-password`,
+        {
+          email: user.email,
+          oldPassword,
+          newPassword,
+        },
+        { withCredentials: true }
+      );
 
-  const toggleShowPassword = (field) => {
-    setShowPassword((prev) => ({
-      ...prev,
-      [field]: !prev[field],
-    }));
+      if (response.data.success) {
+        toast.success("Password changed successfully!");
+        setOldPassword("");
+        setNewPassword("");
+        setConfirmNewPassword("");
+      } else {
+        toast.error(response.data.message || "Failed to change password.");
+      }
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Failed to change password."
+      );
+    }
   };
 
   return (
@@ -75,45 +98,51 @@ const Profile = () => {
             </h3>
 
             {/* Password Fields */}
-            {["currentPassword", "newPassword", "confirmNewPassword"].map(
-              (field, index) => (
-                <div key={index} className="mb-3 relative">
-                  <label className="block text-gray-400 mb-1">
-                    {field === "currentPassword"
-                      ? "Current Password"
-                      : field === "newPassword"
-                      ? "New Password"
-                      : "Confirm New Password"}
-                  </label>
-                  <input
-                    type={showPassword[field] ? "text" : "password"}
-                    name={field}
-                    placeholder={`Enter ${field
-                      .replace(/([A-Z])/g, " $1")
-                      .toLowerCase()}`}
-                    value={passwords[field]}
-                    onChange={handleChange}
-                    className="w-full p-2 rounded-lg bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10"
-                  />
-                  {/* Eye Icon to Toggle Password Visibility */}
-                  <span
-                    className="absolute right-3 top-10 text-gray-400 cursor-pointer"
-                    onClick={() => toggleShowPassword(field)}
-                  >
-                    {showPassword[field] ? (
-                      <FaEyeSlash size={18} />
-                    ) : (
-                      <FaEye size={18} />
-                    )}
-                  </span>
-                </div>
-              )
-            )}
+            <div className="bg-gray-800 mt-4 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-2">Reset Password</h3>
 
+              <div className="mb-2">
+                <label className="text-sm text-gray-300">Old Password</label>
+                <input
+                  type="password"
+                  className="w-full bg-gray-700 mt-1 p-2 rounded-md text-white"
+                  placeholder="Enter old password"
+                  value={oldPassword}
+                  onChange={(e) => setOldPassword(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-2">
+                <label className="text-sm text-gray-300">New Password</label>
+                <input
+                  type="password"
+                  className="w-full bg-gray-700 mt-1 p-2 rounded-md text-white"
+                  placeholder="Enter new password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                />
+              </div>
+
+              <div className="mb-2">
+                <label className="text-sm text-gray-300">
+                  Confirm New Password
+                </label>
+                <input
+                  type="password"
+                  className="w-full bg-gray-700 mt-1 p-2 rounded-md text-white"
+                  placeholder="Confirm new password"
+                  value={confirmNewPassword}
+                  onChange={(e) => setConfirmNewPassword(e.target.value)}
+                />
+              </div>
+            </div>
             {/* Buttons */}
             <div className="flex justify-center gap-4 mt-5">
-              <button className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105">
-                Change Password {/* TODO: Add functionality */}
+              <button 
+              onClick={() => handleChangePassword()}
+              // disabled={!newPassword || !confirmNewPassword}
+              className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105">
+                Change Password
               </button>
               <button
                 onClick={() => {
@@ -127,6 +156,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <ToastContainer position="top-right" autoClose={1000} />
     </>
   );
 };
