@@ -54,11 +54,12 @@ const Profile = () => {
 
       if (response.data.success) {
         toast.success("Password changed successfully!");
+        
+      } else {
+        toast.success(response.data.message+"else block");
         setOldPassword("");
         setNewPassword("");
         setConfirmNewPassword("");
-      } else {
-        toast.error(response.data.message || "Failed to change password.");
       }
     } catch (error) {
       toast.error(
