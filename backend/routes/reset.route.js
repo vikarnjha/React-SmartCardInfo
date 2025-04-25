@@ -20,7 +20,6 @@ resetRouter.post("/change-password", async (req, res) => {
     }
     user.password = await bcrypt.hash(newPassword, 10);
     await user.save();
-    success: true;
     res.status(200).json({ message: "Password changed successfully" });
   } catch (err) {
     console.error("Error changing password:", err);

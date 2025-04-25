@@ -51,16 +51,10 @@ const Profile = () => {
         },
         { withCredentials: true }
       );
-
-      if (response.data.success) {
-        toast.success("Password changed successfully!");
-        
-      } else {
-        toast.success(response.data.message+"else block");
-        setOldPassword("");
-        setNewPassword("");
-        setConfirmNewPassword("");
-      }
+      toast.success(response.data.message);
+      setOldPassword("");
+      setNewPassword("");
+      setConfirmNewPassword("");
     } catch (error) {
       toast.error(
         error.response?.data?.message || "Failed to change password."
@@ -139,10 +133,11 @@ const Profile = () => {
             </div>
             {/* Buttons */}
             <div className="flex justify-center gap-4 mt-5">
-              <button 
-              onClick={() => handleChangePassword()}
-              // disabled={!newPassword || !confirmNewPassword}
-              className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105">
+              <button
+                onClick={() => handleChangePassword()}
+                // disabled={!newPassword || !confirmNewPassword}
+                className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105"
+              >
                 Change Password
               </button>
               <button
