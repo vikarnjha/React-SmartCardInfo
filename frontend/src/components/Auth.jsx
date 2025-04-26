@@ -31,7 +31,7 @@ const Auth = () => {
   const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
-    window.location.href = 'http://localhost:5000/auth/google';
+    window.location.href = 'https://react-smartcardinfo.onrender.com/auth/google';
   };
 
   const handleForgotPassword = async () => {
