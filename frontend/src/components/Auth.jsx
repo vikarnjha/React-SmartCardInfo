@@ -31,7 +31,8 @@ const Auth = () => {
   const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
-    window.location.href = 'https://react-smartcardinfo.onrender.com/auth/google';
+    window.location.href =
+      "https://react-smartcardinfo.onrender.com/auth/google";
   };
 
   const handleForgotPassword = async () => {
@@ -294,7 +295,7 @@ const Auth = () => {
                     toast.error("Passwords do not match.");
                     return;
                   }
-                  
+
                   try {
                     console.log(email, otp, newPassword);
                     setIsLoading(true); // Optional: add loading state if you use a spinner
