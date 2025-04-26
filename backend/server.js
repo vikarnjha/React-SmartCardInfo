@@ -35,28 +35,48 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRouter);
 
-
 // Google login here
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.get('/auth/google', passport.authenticate('google', {
-  scope: ['profile', 'email']
-}));
+app.get(
+  "/auth/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
+);
 
-app.get('/auth/google/callback', 
-  passport.authenticate('google', {session: false},{ failureRedirect: '/login' }),
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    session: false,
+    failureRedirect: "/login",
+  }),
   (req, res) => {
-    // Successful login → Redirect to frontend
-    res.json({ user: req.user.user, token: req.user.token });
+    // After successful login, generate JWT token
+    const token = jwt.sign(
+      {
+        name: req.user.name,
+        email: req.user.email,
+        googleId: req.user.googleId,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // Send the user and token in the response
+    res.json({ user: req.user, token });
+
     res.redirect(`${process.env.FRONTEND_URL}/home`);
   }
 );
