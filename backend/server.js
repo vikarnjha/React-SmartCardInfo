@@ -67,7 +67,9 @@ app.get(
     // After successful login, generate JWT token
     const token = jwt.sign(
       {
-        id: req.user._id,
+        name: req.user.name,
+        email: req.user.email,
+        googleId: req.user.googleId,
       },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
