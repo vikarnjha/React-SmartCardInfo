@@ -61,7 +61,7 @@ app.get(
   "/auth/google/callback",
   passport.authenticate("google", {
     session: false,
-    failureRedirect: "/login",
+    failureRedirect: `${process.env.FRONTEND_URL}/login?error=google`,
   }),
   (req, res) => {
     // After successful login, generate JWT token
@@ -82,12 +82,8 @@ app.get(
       sameSite: "None",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
-    res.redirect(`${process.env.FRONTEND_URL}/home`);
 
-    res.status(200).json({
-      success: true,
-      message: "Login successful!",
-    });
+    res.redirect(`${process.env.FRONTEND_URL}/home`);
   }
 );
 
