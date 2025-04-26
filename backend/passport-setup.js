@@ -29,8 +29,8 @@ passport.use(
           // Generate a JWT token here
           const token = jwt.sign(
             { name: user.name, email: user.email, googleId: user.googleId },
-            process.env.JWT_SECRET, // Use your secret key
-            { expiresIn: "1d" } // Token expiration (e.g., 1 day)
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
           );
 
           // Return user and token in a separate response
@@ -47,8 +47,8 @@ passport.use(
           // Generate a JWT token for the new user
           const token = jwt.sign(
             { name: user.name, email: user.email, googleId: user.googleId },
-            process.env.JWT_SECRET, // Use your secret key
-            { expiresIn: "1d" } // Token expiration
+            process.env.JWT_SECRET,
+            { expiresIn: "1d" }
           );
 
           // Return user and token in a separate response
