@@ -8,6 +8,7 @@ import Auth from "./components/Auth";
 import SavedCards from "./components/SavedCards";
 import { ProtectedRoute, HomeRoute } from "./components/ProtectedRoute";
 import AboutUs from "./components/AboutUs";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 import "./App.css";
 
 function App() {
@@ -91,6 +92,18 @@ function App() {
                 <Footer />
               </div>
             </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/policy"
+          element={
+            <div className="flex flex-col min-h-screen bg-gradient-to-r from-gray-800 to-gray-900 text-white">
+              <Navbar />
+              <div className="flex flex-wrap justify-center flex-grow">
+                <PrivacyPolicy />
+              </div>
+              <Footer />
+            </div>
           }
         />
       </Routes>
