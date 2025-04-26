@@ -31,7 +31,7 @@ const Auth = () => {
   const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
-    return toast.info("Google login clicked but not implemented yet!");
+    window.location.href = 'http://localhost:5000/auth/google';
   };
 
   const handleForgotPassword = async () => {
