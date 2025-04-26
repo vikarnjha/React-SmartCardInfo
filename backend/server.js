@@ -8,7 +8,7 @@ import { cardRouter } from "./routes/card.route.js";
 import { resetRouter } from "./routes/reset.route.js";
 import passport from "passport";
 import session from "express-session";
-import "./passport-setup.js"; 
+import "./passport-setup.js";
 import jwt from "jsonwebtoken";
 
 dotenv.config();
@@ -67,13 +67,24 @@ app.get(
     // After successful login, generate JWT token
     const token = jwt.sign(
       {
-        name: req.user.name,
-        email: req.user.email,
-        googleId: req.user.googleId,
+        id: req.user._id,
       },
       process.env.JWT_SECRET,
       { expiresIn: "1d" }
     );
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Login successful!",
+      user: { id: user._id, name: user.name, email: user.email },
+    });
 
     // Send the user and token in the response
     res.json({ user: req.user, token });
