@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
-import User from "./models/user.model.js"
+import User from "./models/user.model.js";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -23,16 +23,29 @@ passport.use(
             user.googleId = profile.id;
             await user.save(); // Save the googleId to the existing user
           }
-          return done(null, user);
+          // Generate a JWT token here
+          const token = jwt.sign(
+            { name: user.name, email: user.email, googleId: user.googleId },
+            process.env.JWT_SECRET, // Use your secret key
+            { expiresIn: "24h" } // Token expiration (e.g., 1 hour)
+          );
+          return done(null, { user, token });
         } else {
-          // ❌ No user found, create new
+          // Create new user if they don't exist
           user = new User({
             name: profile.displayName,
             email: email,
             googleId: profile.id,
           });
-          await user.save({ validateBeforeSave: false }); // Since no password
-          return done(null, user);
+          await user.save({ validateBeforeSave: false });
+
+          // Generate a JWT token for the new user
+          const token = jwt.sign(
+            { name: user.name, email: user.email, googleId: user.googleId },
+            process.env.JWT_SECRET, // Use your secret key
+            { expiresIn: "24h" } // Token expiration
+          );
+          return done(null, { user, token });
         }
       } catch (err) {
         return done(err, null);

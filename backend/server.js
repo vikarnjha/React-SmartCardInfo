@@ -53,9 +53,10 @@ app.get('/auth/google', passport.authenticate('google', {
 }));
 
 app.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
+  passport.authenticate('google', {session: false},{ failureRedirect: '/login' }),
   (req, res) => {
     // Successful login → Redirect to frontend
+    res.json({ user: req.user.user, token: req.user.token });
     res.redirect(`${process.env.FRONTEND_URL}/home`);
   }
 );
