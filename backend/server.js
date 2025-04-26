@@ -8,7 +8,8 @@ import { cardRouter } from "./routes/card.route.js";
 import { resetRouter } from "./routes/reset.route.js";
 import passport from "passport";
 import session from "express-session";
-import "./passport-setup.js"; // import the passport setup
+import "./passport-setup.js"; 
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 connectDB();
