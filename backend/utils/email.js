@@ -27,3 +27,28 @@ export async function sendOtpEmail(to, otp) {
 `,
   });
 }
+
+export async function sendContactUsEmail(to, subject, message) {
+  await transporter.sendMail({
+    from: `"Support" <${process.env.EMAIL_USER}>`,
+    to,
+    subject: "We Received Your Message!",
+    html: `
+      <div style="max-width: 600px; margin: auto; padding: 20px; font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9;">
+        <h2 style="text-align: center; color: #4a90e2;">Thank You for Contacting Us!</h2>
+        <p>Hello,</p>
+        <p>We have received your message regarding:</p>
+        <div style="margin: 20px 0; padding: 15px; background-color: #eaf4ff; border-left: 5px solid #4a90e2; font-size: 18px; font-weight: bold;">
+          ${subject}
+        </div>
+        <p><strong>Your Message:</strong></p>
+        <div style="margin: 20px 0; padding: 15px; background-color: #f3f4f6; border-radius: 8px; color: #333;">
+          ${message}
+        </div>
+        <p style="color: #555;">Our team will review your query and get back to you shortly.</p>
+        <br>
+        <p style="text-align: center; font-size: 14px; color: #999;">Thank you,<br>Support Team<br>SmartCardManager</p>
+      </div>
+    `,
+  });
+}

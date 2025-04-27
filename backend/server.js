@@ -6,6 +6,7 @@ import { connectDB } from "./configs/mongo.js";
 import { authRouter } from "./routes/auth.route.js";
 import { cardRouter } from "./routes/card.route.js";
 import { resetRouter } from "./routes/reset.route.js";
+import { contactRouter } from "./routes/contact.route.js";
 import passport from "passport";
 import session from "express-session";
 import "./passport-setup.js";
@@ -30,6 +31,7 @@ app.use(
 // Routes
 app.use("/api", cardRouter);
 app.use("/api/auth", resetRouter);
+app.use("/api/auth", contactRouter);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
