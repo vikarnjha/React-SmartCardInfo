@@ -66,10 +66,10 @@ const PrivacyPolicy = () => {
           You have the right to access, update, or request deletion of your
           information. Please contact us at{" "}
           <a
-            href="mailto:[vpainfotech@gmail.com]"
-            className="text-blue-600 underline"
+            href="mailto:vpainfotech@gmail.com"
+            className="text-blue-600"
           >
-            [vpainfotech@gmail.com]
+            vpainfotech@gmail.com
           </a>{" "}
           to exercise your rights.
         </p>
