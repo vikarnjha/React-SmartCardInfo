@@ -9,12 +9,15 @@ import SavedCards from "./components/SavedCards";
 import { ProtectedRoute, HomeRoute } from "./components/ProtectedRoute";
 import AboutUs from "./components/AboutUs";
 import PrivacyPolicy from "./components/PrivacyPolicy";
+import HomePage from "./components/HomePage";
 import "./App.css";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public Route */}
+        <Route path="/homepage" element={<HomePage />} />"
         {/* Public Route */}
         <Route
           path="/"
