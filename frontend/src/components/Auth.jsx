@@ -12,7 +12,7 @@ const API_URL = "https://react-smartcardinfo.onrender.com/api/auth";
 
 const Auth = () => {
   const { setUser } = useAuth();
-  const [action, setAction] = useState("Sign Up");
+  const [action, setAction] = useState("Sign In");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

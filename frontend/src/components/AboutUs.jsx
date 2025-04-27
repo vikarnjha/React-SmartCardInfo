@@ -10,12 +10,12 @@ const AboutUs = () => {
   return (
     <div className="w-full my-auto max-w-3xl bg-gray-900 bg-opacity-75 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
       <h2 className="text-3xl font-extrabold text-indigo-400 mb-6 text-center">
-        About Smart Card Info
+        About Smart Card Manager
       </h2>
 
       <div className="space-y-4 text-gray-300">
         <p>
-          Smart Card Info is your go-to application for securely storing,
+          Smart Card Manager is your go-to application for securely storing,
           managing, and viewing your payment card details. Built with React and
           MongoDB, our platform ensures your sensitive information stays private
           and encrypted.
@@ -32,7 +32,7 @@ const AboutUs = () => {
       </h3>
       <p className="text-gray-300 mb-6 leading-relaxed">
         This project was conceived and developed by <strong>Vikarn Jha</strong>.
-        As a full‑stack enthusiast, I built Smart Card Info from scratch using
+        As a full‑stack enthusiast, I built Smart Card Manager from scratch using
         React on the frontend and MongoDB/Node.js on the backend. I handled
         everything from UI design with Tailwind CSS to secure authentication,
         card encryption, and email notifications.

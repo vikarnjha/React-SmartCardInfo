@@ -66,7 +66,7 @@ const Profile = () => {
     <>
       {/* Profile Section */}
       <div className="h-full flex justify-center items-center bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-        <div className="bg-gray-900 p-6 rounded-2xl shadow-xl w-96 text-center">
+        <div className="bg-gray-900 p-4 rounded-2xl shadow-xl w-96 text-center">
           {/* Profile Image */}
           <div className="relative">
             <FaUserCircle className="w-28 h-28 mx-auto rounded-full border-4 border-gray-700 shadow-lg" />
@@ -75,8 +75,8 @@ const Profile = () => {
           {user ? (
             <>
               {/* User Info */}
-              <h2 className="text-2xl font-semibold mt-4">{user.name}</h2>
-              <p className="text-gray-300 mt-2">{user.email}</p>
+              <h2 className="text-2xl font-semibold mt-2">{user.name}</h2>
+              <p className="text-gray-300 mt-1 mb-2">{user.email}</p>
             </>
           ) : (
             <>
@@ -87,16 +87,16 @@ const Profile = () => {
           )}
 
           {/* Change Password Section */}
-          <div className="mt-6 text-left">
-            <h3 className="text-lg font-semibold text-gray-300 mb-3">
+          <div className="text-left">
+            <h3 className="text-lg font-semibold text-gray-300 mb-2">
               🔒 Change Password
             </h3>
 
             {/* Password Fields */}
-            <div className="bg-gray-800 mt-4 p-4 rounded-lg">
+            <div className="bg-gray-800 mt-2 p-4 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Reset Password</h3>
 
-              <div className="mb-2">
+              <div className="mb-1">
                 <label className="text-sm text-gray-300">Old Password</label>
                 <input
                   type="password"
@@ -107,7 +107,7 @@ const Profile = () => {
                 />
               </div>
 
-              <div className="mb-2">
+              <div className="mb-1">
                 <label className="text-sm text-gray-300">New Password</label>
                 <input
                   type="password"
@@ -118,7 +118,7 @@ const Profile = () => {
                 />
               </div>
 
-              <div className="mb-2">
+              <div className="mb-1">
                 <label className="text-sm text-gray-300">
                   Confirm New Password
                 </label>
@@ -136,7 +136,7 @@ const Profile = () => {
               <button
                 onClick={() => handleChangePassword()}
                 // disabled={!newPassword || !confirmNewPassword}
-                className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105"
+                className="w-60 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105"
               >
                 Change Password
               </button>

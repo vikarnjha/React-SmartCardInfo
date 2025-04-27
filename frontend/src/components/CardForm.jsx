@@ -30,9 +30,9 @@ const cardConfig = {
 };
 
 const cardNumbers = [
-  { number: "4210 0611 1111 1111" }, // Visa Debit
-  { number: "4166 4411 1111 1111" }, // Visa Credit
-  { number: "4510 0690 1111 1111" }, // Visa Prepaid
+  { number: "4210 0612 1435 4253" }, // Visa Debit
+  { number: "4166 4411 3567 7665" }, // Visa Credit
+  { number: "4510 0690 8646 3498" }, // Visa Prepaid
   { number: "5086 3710 5555 4444" }, // Rupay Debit
   { number: "6529 7210 5678 9012" }, // Rupay Credit
   { number: "5545 3410 5678 9012" }, // Mastercard Debit
@@ -267,7 +267,7 @@ function CardForm() {
         {/* Form */}
         <div className="bg-gradient-to-br from-white via-gray-50 to-gray-100 p-4 md:p-8 rounded-2xl shadow-xl w-full max-w-md border border-gray-200">
           <h2 className="text-3xl font-bold mb-6 text-center text-indigo-600">
-            💳 Smart Card Info
+            💳 Smart Card Manager
           </h2>
 
           <form className="space-y-2">

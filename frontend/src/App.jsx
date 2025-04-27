@@ -20,7 +20,13 @@ function App() {
           path="/"
           element={
             <HomeRoute>
-              <Auth />
+             <div className="flex flex-col h-dvh">
+                <Navbar />
+                <div className="flex-1 h-full">
+                  <Auth />
+                </div>
+                <Footer />
+              </div>
             </HomeRoute>
           }
         />

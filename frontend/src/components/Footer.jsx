@@ -13,7 +13,7 @@ const Footer = () => {
 
           {/* Bottom - Copyright */}
           <div className="text-center text-gray-400 text-xs mx-2 border-gray-700 px-1">
-              © {new Date().getFullYear()} SmartCardInfo. All rights reserved.
+              © {new Date().getFullYear()} SmartCardManager. All rights reserved.
             </div>
 
           {/* Right - Social Icons */}

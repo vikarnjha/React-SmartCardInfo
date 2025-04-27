@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/scilogo.png"
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,8 +10,9 @@ const Navbar = () => {
       {/* Navbar */}
       <nav className="bg-gradient-to-r from-gray-800 to-gray-900 bg-opacity-90 backdrop-blur-lg shadow-md p-4 md:px-8 flex justify-between items-center  w-full  z-50">
         {/* Logo */}
-        <h1 className="text-2xl font-extrabold tracking-wide text-blue-300">
-          🚀 SmartCardInfo
+        <h1 className="text-xl font-extrabold tracking-wide text-blue-300 cursor-pointer">
+          <img src={logo} alt="logo" className="h-10 w-10 inline-block mr-2 rounded-full
+" /> SmartCardManager
         </h1>
 
         {/* Desktop Menu */}
