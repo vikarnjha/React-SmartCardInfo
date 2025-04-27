@@ -29,6 +29,9 @@ const cardConfig = {
   carddefault: { icon: carddefault },
 };
 
+const API_URL = import.meta.env.VITE_BACKEND;
+const API_HANDY = import.meta.env.VITE_HANDY;
+
 const cardNumbers = [
   { number: "4210 0612 1435 4253" }, // Visa Debit
   { number: "4166 4411 3567 7665" }, // Visa Credit
@@ -60,7 +63,7 @@ function CardForm() {
     }
     try {
       const response = await axios.post(
-        `https://react-smartcardinfo.onrender.com/api/cards/email/${user.email}`,
+        `${API_URL}/api/card/email/${user.email}`,
         {
           cardNumber,
           cardName,
@@ -146,7 +149,7 @@ function CardForm() {
     try {
       const response = await fetch(`https://data.handyapi.com/bin/${bin}`, {
         headers: {
-          "x-api-key": "HAS-0YDdq61vXRkLmPgNu5ntZUVc48", // 🔐 your real key
+          "x-api-key": `${API_HANDY}` , 
         },
       });
 

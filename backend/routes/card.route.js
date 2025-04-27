@@ -3,7 +3,7 @@ import User from "../models/user.model.js";
 import { encryptCard, decryptCard } from "../cryptoUtils.js";
 const cardRouter = express.Router();
 
-cardRouter.get("/cards/email/:email", async (req, res) => {
+cardRouter.get("/email/:email", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.params.email }).select(
       "cards"
@@ -32,7 +32,7 @@ cardRouter.get("/cards/email/:email", async (req, res) => {
   }
 });
 
-cardRouter.post("/cards/email/:email", async (req, res) => {
+cardRouter.post("/email/:email", async (req, res) => {
   try {
     const {
       cardNumber,
@@ -76,7 +76,7 @@ cardRouter.post("/cards/email/:email", async (req, res) => {
   }
 });
 
-cardRouter.delete("/cards/email/:email/:cardId", async (req, res) => {
+cardRouter.delete("/email/:email/:cardId", async (req, res) => {
   const { email, cardId } = req.params;
 
   try {

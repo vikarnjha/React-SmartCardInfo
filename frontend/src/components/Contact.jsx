@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 
-const API_URL = "https://react-smartcardinfo.onrender.com/api/auth";
+const API_URL = import.meta.env.VITE_BACKEND;
 
 const Contact = () => {
   const { user } = useAuth();
@@ -23,7 +23,7 @@ const Contact = () => {
       return toast.warn("All fields are required!");
     }
     try {
-      const response = await axios.post(`${API_URL}/contact`, {
+      const response = await axios.post(`${API_URL}/api/contact/us`, {
         email: user.email,
         subject: formData.subject,
         message: formData.message,

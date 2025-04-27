@@ -5,7 +5,7 @@ import { sendOtpEmail } from "../utils/email.js";
 
 const resetRouter = express.Router();
 
-resetRouter.post("/change-password", async (req, res) => {
+resetRouter.post("/change", async (req, res) => {
   const { email, oldPassword, newPassword } = req.body;
 
   try {
@@ -28,7 +28,7 @@ resetRouter.post("/change-password", async (req, res) => {
 });
 
 // a) Request OTP
-resetRouter.post("/forgot-password/request-otp", async (req, res) => {
+resetRouter.post("/forgot/otp", async (req, res) => {
   const email = req.body.email?.trim().toLowerCase();
 
   try {
@@ -59,7 +59,7 @@ resetRouter.post("/forgot-password/request-otp", async (req, res) => {
 });
 
 // b) Verify OTP & Reset Password
-resetRouter.post("/forgot-password/reset", async (req, res) => {
+resetRouter.post("/forgot/reset", async (req, res) => {
   const { email, otp, newPassword } = req.body;
   try {
     const user = await User.findOne({ email });

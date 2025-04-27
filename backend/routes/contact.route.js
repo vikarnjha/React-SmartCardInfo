@@ -3,7 +3,7 @@ import express from "express";
 import { sendContactUsEmail } from "../utils/email.js";
 
 const contactRouter = express.Router();
-contactRouter.post("/contact", async (req, res) => {
+contactRouter.post("/us", async (req, res) => {
   try {
     const { email, subject, message } = req.body;
 

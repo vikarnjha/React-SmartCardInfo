@@ -29,13 +29,9 @@ app.use(
 );
 
 // Routes
-app.use("/api", cardRouter);
-app.use("/api/auth", resetRouter);
-app.use("/api/auth", contactRouter);
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
+app.use("/api/card", cardRouter);
+app.use("/api/reset", resetRouter);
+app.use("/api/contact", contactRouter);
 app.use("/api/auth", authRouter);
 
 // Google login here

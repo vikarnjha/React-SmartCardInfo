@@ -12,15 +12,14 @@ const Profile = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
 
-  const API_URL = "https://react-smartcardinfo.onrender.com/api/auth";
-  // const API_URL = "http://localhost:5000/api/auth";
+  const API_URL = import.meta.env.VITE_BACKEND;
 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
       await axios.post(
-        "https://react-smartcardinfo.onrender.com/api/auth/logout",
+        `${API_URL}/api/auth/logout`,
         null,
         {
           withCredentials: true, // Must be set to send cookies
@@ -135,7 +134,6 @@ const Profile = () => {
             <div className="flex justify-center gap-4 mt-5">
               <button
                 onClick={() => handleChangePassword()}
-                // disabled={!newPassword || !confirmNewPassword}
                 className="w-60 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all duration-300 ease-in-out cursor-pointer hover:scale-105"
               >
                 Change Password

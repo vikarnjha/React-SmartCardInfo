@@ -1,24 +1,23 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
-// Create the context
 const AuthContext = createContext();
+const API_URL = import.meta.env.VITE_BACKEND;
 
-// Auth provider component
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Holds the user info
-  const [loading, setLoading] = useState(true); // Loading flag
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Verify user on page load
   useEffect(() => {
     const verifyUser = async () => {
       try {
-        const res = await axios.get("https://react-smartcardinfo.onrender.com/api/auth/verify", {
-          withCredentials: true, // Send cookies
+        const res = await axios.get(`${API_URL}/api/auth/verify`, {
+          withCredentials: true,
         });
-        setUser(res.data.user); // Set user from backend response
+        setUser(res.data.user);
       } catch (error) {
-        setUser(null); // Not logged in or invalid token
+        setUser(null);
         console.log(error);
       } finally {
         setLoading(false);
@@ -35,6 +34,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// Custom hook for easy access
 // eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);

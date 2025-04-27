@@ -19,6 +19,8 @@ import {
   visa,
 } from "../config/cardIcons";
 
+const API_URL = import.meta.env.VITE_BACKEND;
+
 const cardConfig = {
   visa: { icon: visa },
   mastercard: { icon: mastercard },
@@ -81,7 +83,7 @@ const Cards = ({
     const onDelete = async () => {
       setIsLoading(true);
       await fetch(
-        `https://react-smartcardinfo.onrender.com/api/cards/email/${user.email}/${cardId}`,
+        `${API_URL}/api/card/email/${user.email}/${cardId}`,
         { method: "DELETE" }
       )
         .then((res) => {

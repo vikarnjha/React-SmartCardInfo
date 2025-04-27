@@ -7,8 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Loading from "../loading/Loading";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = "https://react-smartcardinfo.onrender.com/api/auth";
-// const API_URL = "http://localhost:5000/api/auth";
+const API_URL = import.meta.env.VITE_BACKEND;
 
 const Auth = () => {
   const { setUser } = useAuth();
@@ -32,7 +31,7 @@ const Auth = () => {
 
   const handleGoogleLogin = () => {
     window.location.href =
-      "https://react-smartcardinfo.onrender.com/auth/google";
+      `${API_URL}/auth/google`;
   };
 
   const handleForgotPassword = async () => {
@@ -41,10 +40,9 @@ const Auth = () => {
     }
 
     try {
-      const response = await axios.post(
-        `${API_URL}/forgot-password/request-otp`,
-        { email }
-      );
+      const response = await axios.post(`${API_URL}/api/reset/forgot/otp`, {
+        email,
+      });
       if (response.data.success) {
         toast.success("OTP sent to your email.");
         console.log(otpSent);
@@ -71,7 +69,7 @@ const Auth = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `${API_URL}/register`,
+        `${API_URL}/api/auth/register`,
         { name, email, password },
         { withCredentials: true }
       );
@@ -96,7 +94,7 @@ const Auth = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        `${API_URL}/login`,
+        `${API_URL}/api/auth/login`,
         { email, password },
         { withCredentials: true }
       );
@@ -300,7 +298,7 @@ const Auth = () => {
                     console.log(email, otp, newPassword);
                     setIsLoading(true); // Optional: add loading state if you use a spinner
                     const res = await axios.post(
-                      `${API_URL}/forgot-password/reset`,
+                      `${API_URL}/api/reset/forgot/reset`,
                       {
                         email,
                         otp,

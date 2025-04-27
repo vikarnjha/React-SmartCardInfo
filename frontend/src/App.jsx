@@ -17,13 +17,12 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Public Route */}
-        <Route path="/homepage" element={<HomePage />} />"
-        {/* Public Route */}
+        <Route path="/homepage" element={<HomePage />} />"{/* Public Route */}
         <Route
           path="/"
           element={
             <HomeRoute>
-             <div className="flex flex-col h-dvh">
+              <div className="flex flex-col h-dvh">
                 <Navbar />
                 <Auth />
                 <Footer />
@@ -31,7 +30,6 @@ function App() {
             </HomeRoute>
           }
         />
-
         {/* Protected Routes */}
         <Route
           path="/home"
@@ -76,15 +74,13 @@ function App() {
         <Route
           path="/about"
           element={
-            // <ProtectedRoute>
-              <div className="flex flex-col min-h-screen bg-gradient-to-r from-gray-800 to-gray-900">
-                <Navbar />
-                <div className="flex flex-wrap justify-center flex-grow">
-                  <AboutUs />
-                </div>
-                <Footer />
+            <div className="flex flex-col min-h-screen bg-gradient-to-r from-gray-800 to-gray-900">
+              <Navbar />
+              <div className="flex flex-wrap justify-center flex-grow">
+                <AboutUs />
               </div>
-            // </ProtectedRoute>
+              <Footer />
+            </div>
           }
         />
         <Route
