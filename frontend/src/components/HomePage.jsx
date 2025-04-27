@@ -1,11 +1,13 @@
 import React from "react";
+import logo from "../assets/scilogo.png"
 
 const Homepage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6">
       <div className="max-w-4xl w-full shadow-2xl rounded-2xl p-8 bg-gray-900 bg-opacity-75 text-white">
         <h1 className="text-4xl font-bold text-center text-blue-600 mb-6">
-          Smart Card Manager
+            <img src={logo} alt="logo" className="h-10 w-10 inline-block mr-2 rounded-full
+            " />Smart Card Manager
         </h1>
 
         <p className="text-lg text-gray-300 mb-6 text-center">
