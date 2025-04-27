@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
+const API_URL = import.meta.env.VITE_BACKEND;
 
 const Profile = () => {
   const { user, setUser } = useAuth();
@@ -12,7 +13,6 @@ const Profile = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
 
-  const API_URL = import.meta.env.VITE_BACKEND;
 
   const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ const Profile = () => {
     }
     try {
       const response = await axios.post(
-        `${API_URL}/change-password`,
+        `${API_URL}/api/reset/change`,
         {
           email: user.email,
           oldPassword,
