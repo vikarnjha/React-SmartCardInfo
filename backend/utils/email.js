@@ -22,7 +22,7 @@ export async function sendOtpEmail(to, otp) {
     <p style="color: #555;">This OTP is valid for <strong>15 minutes</strong>. Please do not share this code with anyone.</p>
     <p>If you didn't request a password reset, you can safely ignore this email.</p>
     <br>
-    <p style="text-align: center; font-size: 14px; color: #999;">Thank you,<br>Support Team,<br>SmartCardManager</p>
+    <p style="text-align: center; font-size: 14px; color: #999;">Thank you,<br>Support Team<br>SmartCardManager</p>
   </div>
 `,
   });

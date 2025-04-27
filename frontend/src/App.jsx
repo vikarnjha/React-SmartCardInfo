@@ -25,9 +25,7 @@ function App() {
             <HomeRoute>
              <div className="flex flex-col h-dvh">
                 <Navbar />
-                <div className="flex-1 h-full">
-                  <Auth />
-                </div>
+                <Auth />
                 <Footer />
               </div>
             </HomeRoute>
@@ -78,7 +76,7 @@ function App() {
         <Route
           path="/about"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <div className="flex flex-col min-h-screen bg-gradient-to-r from-gray-800 to-gray-900">
                 <Navbar />
                 <div className="flex flex-wrap justify-center flex-grow">
@@ -86,7 +84,7 @@ function App() {
                 </div>
                 <Footer />
               </div>
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route

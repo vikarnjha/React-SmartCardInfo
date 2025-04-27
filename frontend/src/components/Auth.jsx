@@ -116,7 +116,7 @@ const Auth = () => {
   return (
     <>
       {isLoading && <Loading />}
-      <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      <div className="h-full flex justify-center items-center bg-gradient-to-br from-gray-900 to-gray-800 text-white">
         <div className="bg-gray-900 p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-md">
           <h2 className="text-3xl font-bold text-center mb-6">{action}</h2>
 
