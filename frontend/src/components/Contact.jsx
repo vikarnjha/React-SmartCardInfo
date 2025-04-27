@@ -16,26 +16,24 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    async () => {
-      if (!formData.subject || !formData.message) {
-        return toast.warn("All fields are required!");
-      }
-      try {
-        const response = await axios.post(`${API_URL}/contact`, {
-          email: user.email,
-          subject: formData.subject,
-          message: formData.message,
-        });
-        toast.success(response.data.message);
-      } catch (error) {
-        toast.error(error.response?.data?.message || "Failed to send message.");
-      } finally {
-        setFormData({ subject: "", message: "" }); // Reset form
-      }
-    };
+    if (!formData.subject || !formData.message) {
+      return toast.warn("All fields are required!");
+    }
+    try {
+      const response = await axios.post(`${API_URL}/contact`, {
+        email: user.email,
+        subject: formData.subject,
+        message: formData.message,
+      });
+      toast.success(response.data.message);
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Failed to send message.");
+    } finally {
+      setFormData({ subject: "", message: "" }); // Reset form
+    }
   };
 
   return (
@@ -76,7 +74,7 @@ const Contact = () => {
             <button
               onClick={handleSubmit}
               type="submit"
-              className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all"
+              className="w-full py-2 cursor-pointer bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all"
             >
               Send Message
             </button>
