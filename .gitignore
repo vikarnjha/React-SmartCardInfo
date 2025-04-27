@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 frontend/src/.env
 backend/.env
+frontend/.env
