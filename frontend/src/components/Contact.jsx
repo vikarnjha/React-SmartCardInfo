@@ -74,6 +74,7 @@ const Contact = () => {
 
             {/* Submit Button */}
             <button
+              onClick={handleSubmit}
               type="submit"
               className="w-full py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-white font-semibold shadow-md transition-all"
             >
